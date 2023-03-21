@@ -33,10 +33,28 @@ let frmJson = [{
         }
     }
 }, {
+    type: 'textarea',
+    id: 'txLName',
+    class: 'form-control',
+    label: 'Address',
+    dec: 'color:red',
+    col: 'col-md-6',
+    row: '1',
+    validateType: {
+        isValidate: true,
+        rule: {
+            require: true,
+            minLength: 0,
+            isEmail: false,
+            isNumeric: false,
+            message: '{LABEL} is required!'
+        }
+    }
+}, {
     type: 'text',
     id: 'txAdd',
     class: 'form-control',
-    label: 'Address',
+    label: 'Mobile.no',
     dec: 'color:red',
     col: 'col-5',
     validateType: {
@@ -101,11 +119,12 @@ let frmJson = [{
         }
     }
 }, {
-    type: 'checkbox',
+    type: 'radio',
     id: 'btnCheck',
     class: '',
     label: 'Accept Terms & Condition',
-    col: 'col-7',
+    col: 'col-8',
+    Option: ["Male", "Female", "Other"],
     validateType: {
         isValidate: true,
         rule: {
@@ -124,27 +143,59 @@ let frmJson = [{
     label: 'Save'
 }];
 
+
 let frmHTML = '';
 for (let i = 0; i < frmJson.length; i++) {
-    if (frmJson[i].type != 'button') {
+    console.log((i + 1) + "coming for" + frmJson[i].type);
+
+
+    if (frmJson[i].type == 'text' || frmJson[i].type == 'email' || frmJson[i].type == 'date' || frmJson[i].type == 'password') {
+        console.log("come for input");
         frmHTML = `${frmHTML}
         <div class="form-group ${frmJson[i].col}">
         <label for="${frmJson[i].id}" style="${frmJson[i].dec}">${frmJson[i].label}</label>
         <input type="${frmJson[i].type}" class="${frmJson[i].class}" id="${frmJson[i].id}" style="${frmJson[i].dec}"/>
         <div id="${frmJson[i].id}_err" class="d-none invalid-feedback"></div>
         </div>`;
-    } else {
+    }
+    if (frmJson[i].type == 'button') {
+        console.log("come for button");
         frmHTML = `${frmHTML}
-
         <div class="${frmJson[i].col}">
         <button type="${frmJson[i].type}" class="${frmJson[i].class}" id="${frmJson[i].id}" onclick="onsaveclick()">${frmJson[i].label}</button>
         </div>`;
+    }
+    if (frmJson[i].type == 'textarea') {
+        console.log("come for textarea");
+        frmHTML = `${frmHTML}
+        <div class="mb-3 ${frmJson[i].col}">
+        <label for="exampleFormControlTextarea1" style="${frmJson[i].dec}" class="form-label" style="${frmJson[i].dec}">${frmJson[i].label}</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1"  style="${frmJson[i].dec}" rows="${frmJson[i].row}"></textarea>
+      </div>`
+    }
+
+    if (frmJson[i].type == 'checkbox' || frmJson[i].type == 'radio') {
+        console.log("come for checkbox");
+        let postData = ""
+        for (let j = 0; j < frmJson[i].Option.length; j++) {
+            console.log(j, frmJson[i].Option[j]);
+            const newData = `
+            <div class="form-check ${frmJson[i].col}">
+            <input class="form-check-input" type="${frmJson[i].type}" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                ${frmJson[i].Option[j]}
+            </label>
+          </div>`
+
+            postData = `${postData} ${newData} `
+        }
+
+        frmHTML = `${frmHTML} ${postData} `
     }
 }
 document.getElementById('dynamicFrm').innerHTML = frmHTML;
 // document.getElementById('jsonForm').innerText = JSON.stringify(frmJson);
 function onsaveclick() {
-    alert("Form is submitted");
     let isFrmValid = true;
     let frm = {
         firstName: document.getElementById('txFName').value,
