@@ -1,4 +1,23 @@
 let frmJson = [{
+    type: 'drop-down',
+    id: 'txFName',
+    class: 'form-control',
+    label: 'First Name',
+    dec: 'color:red',
+    title: 'Bootstrap',
+    Option: ["version5.3", "version4.0"],
+    col: 'col-5',
+    validateType: {
+        isValidate: true,
+        rule: {
+            require: true,
+            minLength: 0,
+            isEmail: false,
+            isNumeric: false,
+            message: '{LABEL} is required!'
+        }
+    }
+}, {
     type: 'text',
     id: 'txFName',
     class: 'form-control',
@@ -119,12 +138,66 @@ let frmJson = [{
         }
     }
 }, {
-    type: 'radio',
+    type: 'time',
+    id: 'txtDob',
+    class: 'form-control',
+    label: 'Date Of Birth',
+    dec: 'color:red',
+    col: 'col-md-5',
+    validateType: {
+        isValidate: true,
+        rule: {
+            require: true,
+            minLength: 0,
+            isEmail: false,
+            isNumeric: false,
+            message: '{LABEL} is required!'
+        }
+    }
+}, {
+    type: 'checkbox',
+    id: 'btnCheck',
+    class: '',
+    label: 'Accept Terms & Condition',
+    col: 'col-8',
+    title: 'Select Your Gender',
+    Option: ["Male", "Female", "Other"],
+    validateType: {
+        isValidate: true,
+        rule: {
+            require: true,
+            minLength: 0,
+            isEmail: false,
+            isNumeric: false,
+            message: '{LABEL} selection is required!'
+        }
+    }
+}, {
+    type: 'fileupload',
     id: 'btnCheck',
     class: '',
     label: 'Accept Terms & Condition',
     col: 'col-8',
     Option: ["Male", "Female", "Other"],
+    title: 'Please Upload Mentioned doc.',
+    validateType: {
+        isValidate: true,
+        rule: {
+            require: true,
+            minLength: 0,
+            isEmail: false,
+            isNumeric: false,
+            message: '{LABEL} selection is required!'
+        }
+    }
+}, {
+    type: 'Rating',
+    id: 'btnCheck',
+    class: '',
+    label: 'Accept Terms & Condition',
+    col: 'col-8',
+    Option: ["Male", "Female", "Other"],
+    title: 'Rate The Clinic',
     validateType: {
         isValidate: true,
         rule: {
@@ -152,7 +225,7 @@ for (let i = 0; i < frmJson.length; i++) {
     if (frmJson[i].type == 'text' || frmJson[i].type == 'email' || frmJson[i].type == 'date' || frmJson[i].type == 'password') {
         console.log("come for input");
         frmHTML = `${frmHTML}
-        <div class="form-group ${frmJson[i].col}">
+        <div class="form-group ${frmJson[i].col} p-2">
         <label for="${frmJson[i].id}" style="${frmJson[i].dec}">${frmJson[i].label}</label>
         <input type="${frmJson[i].type}" class="${frmJson[i].class}" id="${frmJson[i].id}" style="${frmJson[i].dec}"/>
         <div id="${frmJson[i].id}_err" class="d-none invalid-feedback"></div>
@@ -160,15 +233,15 @@ for (let i = 0; i < frmJson.length; i++) {
     }
     if (frmJson[i].type == 'button') {
         console.log("come for button");
-        frmHTML = `${frmHTML}
-        <div class="${frmJson[i].col}">
+        frmHTML = `${frmHTML}<br><br>
+        <div class="${frmJson[i].col} p-2">
         <button type="${frmJson[i].type}" class="${frmJson[i].class}" id="${frmJson[i].id}" onclick="onsaveclick()">${frmJson[i].label}</button>
         </div>`;
     }
     if (frmJson[i].type == 'textarea') {
         console.log("come for textarea");
         frmHTML = `${frmHTML}
-        <div class="mb-3 ${frmJson[i].col}">
+        <div class="mb-3 ${frmJson[i].col} ">
         <label for="exampleFormControlTextarea1" style="${frmJson[i].dec}" class="form-label" style="${frmJson[i].dec}">${frmJson[i].label}</label>
         <textarea class="form-control" id="exampleFormControlTextarea1"  style="${frmJson[i].dec}" rows="${frmJson[i].row}"></textarea>
       </div>`
@@ -176,21 +249,61 @@ for (let i = 0; i < frmJson.length; i++) {
 
     if (frmJson[i].type == 'checkbox' || frmJson[i].type == 'radio') {
         console.log("come for checkbox");
+        frmHTML = `${frmHTML}<div class="form-group p-4"><h5>${frmJson[i].title}</h5><div>`
         let postData = ""
         for (let j = 0; j < frmJson[i].Option.length; j++) {
             console.log(j, frmJson[i].Option[j]);
-            const newData = `
-            <div class="form-check ${frmJson[i].col}">
-            <input class="form-check-input" type="${frmJson[i].type}" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-                ${frmJson[i].Option[j]}
-            </label>
-          </div>`
+            const newData = `<section><div class="form-check ${frmJson[i].col} p-1">
+            <label for="flexCheckDefault" style="${frmJson[i].dec}">${frmJson[i].Option[j]}</label>
+            <input type="${frmJson[i].type}" class="${frmJson[i].class}" id="${frmJson[i].id}" style="${frmJson[i].dec}"/>
+            <div id="${frmJson[i].id}_err" class="d-none invalid-feedback"></div>
+            </div></section>`
 
             postData = `${postData} ${newData} `
         }
 
-        frmHTML = `${frmHTML} ${postData} `
+        frmHTML = `${frmHTML} ${postData}`
+    }
+    if (frmJson[i].type == 'fileupload') {
+        frmHTML = `${frmHTML}<br>
+        <section>
+        <div class="form-group p-1">
+        <h5>${frmJson[i].title}</h5>
+        <input type="file" id="myFile" name="filename">
+        <input type="submit">
+        </div>
+        </section>`
+    }
+    if (frmJson[i].type == 'Rating') {
+        frmHTML = `${frmHTML}<br><h5>${frmJson[i].title}</h5> 
+        <div class="rating p-2"><br>
+        <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+        <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+        <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+        <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+        <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+  <div>`
+    }
+    if (frmJson[i].type == 'time') {
+        frmHTML = `${frmHTML}
+        <div class="form-group p-3">
+        <label for="appt"><h5>Select a time:</h5></label><br>
+        <input type="time" id="appt" name="appt"> </div> 
+      `
+    }
+    if (frmJson[i].type == 'drop-down') {
+        frmHTML = `${frmHTML}<section><div class="btn-group float-end">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+         ${frmJson[i].title}
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
+      </div></section>`
     }
 }
 document.getElementById('dynamicFrm').innerHTML = frmHTML;

@@ -1,1 +1,24 @@
 Develop By "KEYUR"
+
+if (versiontype = check) {
+    logic
+}
+esleif(versiontype = check){
+    logic
+}
+elseif(versiontype = check){
+
+}
+else {
+
+}
+
+version5(){
+    links
+}
+version4(){
+    links
+}
+version3(){
+    links
+}
