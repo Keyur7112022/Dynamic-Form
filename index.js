@@ -3,7 +3,7 @@ let frmJson = [{
     id: 'txFName',
     class: 'form-control',
     label: 'First Name',
-    dec: 'color:red',
+    dec: 'color:black',
     title: 'Bootstrap',
     Option: ["version5.3", "version4.0"],
     col: 'col-5',
@@ -22,7 +22,7 @@ let frmJson = [{
     id: 'txFName',
     class: 'form-control',
     label: 'First Name',
-    dec: 'color:red',
+    dec: 'color:black',
     col: 'col-5',
     validateType: {
         isValidate: true,
@@ -39,7 +39,7 @@ let frmJson = [{
     id: 'txLName',
     class: 'form-control',
     label: 'Last Name',
-    dec: 'color:red',
+    dec: 'color:black',
     col: 'col-md-5',
     validateType: {
         isValidate: true,
@@ -56,7 +56,7 @@ let frmJson = [{
     id: 'txLName',
     class: 'form-control',
     label: 'Address',
-    dec: 'color:red',
+    dec: 'color:black',
     col: 'col-md-6',
     row: '1',
     validateType: {
@@ -74,7 +74,7 @@ let frmJson = [{
     id: 'txAdd',
     class: 'form-control',
     label: 'Mobile.no',
-    dec: 'color:red',
+    dec: 'color:black',
     col: 'col-5',
     validateType: {
         isValidate: true,
@@ -91,7 +91,7 @@ let frmJson = [{
     id: 'txEmail',
     class: 'form-control',
     label: '*Email',
-    dec: 'color:red',
+    dec: 'color:black',
     col: 'col-md-5',
     validateType: {
         isValidate: true,
@@ -108,7 +108,7 @@ let frmJson = [{
     id: 'txPassword',
     class: 'form-control',
     label: '*Password',
-    dec: 'color:red',
+    dec: 'color:black',
     col: 'col-md-5',
     validateType: {
         isValidate: true,
@@ -125,7 +125,7 @@ let frmJson = [{
     id: 'txtDob',
     class: 'form-control',
     label: 'Date Of Birth',
-    dec: 'color:red',
+    dec: 'color:black',
     col: 'col-md-5',
     validateType: {
         isValidate: true,
@@ -142,7 +142,7 @@ let frmJson = [{
     id: 'txtDob',
     class: 'form-control',
     label: 'Date Of Birth',
-    dec: 'color:red',
+    dec: 'color:black',
     col: 'col-md-5',
     validateType: {
         isValidate: true,
