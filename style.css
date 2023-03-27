@@ -64,18 +64,11 @@
     border-right: 0;
 }
 canvas#signature-pad {
+    border:1px solid  #070000;
     background: #fff;
     width: 150%;
     height: 100%;
     cursor: crosshair;
-}
-button#clear {
-    height: 100%;
-    background: #796d97;
-    border: 1px solid transparent;
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
 }
 button#clear span {
     transform: rotate(90deg);
