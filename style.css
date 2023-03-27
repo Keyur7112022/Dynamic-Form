@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
 
 
-
-body h1 {
+ h1 {
     font-family: 'Roboto Slab', serif;
     margin: 50px 20px 40px;
     font-size: 50px;
@@ -46,3 +45,37 @@ body h1 {
 .rating:not(:checked)>label:hover~label:before {
     color: #f9df4a;
 }
+
+
+
+
+/* ===============Signature================ */
+:root {
+    --primary-color: #000;
+  }
+  .signature-pad-form {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .signature-pad {
+    cursor: url(pen.png) 1 26, pointer;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+  }
+  .clear-button {
+    color: var(--primary-color);
+  }
+  .submit-button {
+    width: 100%;
+    background-color: var(--primary-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 2rem;
+  }
+  @media (pointer: coarse) {
+    body {
+      overflow: hidden; /* Needed to prevent the vertical scroll on touch devices */
+    }
+  }
