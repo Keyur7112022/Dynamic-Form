@@ -172,7 +172,7 @@ let frmJson = [{
         }
     }
 },{
-    type: 'fileupload',
+    type: 'file-upload',
     id: 'btnCheck',
     class: '',
     label: 'Please Upload Mentioned doc.',
@@ -283,16 +283,11 @@ for (let i = 0; i < frmJson.length; i++) {
 
         frmHTML = `${frmHTML} ${postData}`
     }
-    if (frmJson[i].type == 'fileupload') {
+    if (frmJson[i].type == 'file-upload') {
         frmHTML = `${frmHTML}
         <br>
-        <section>
-        <div class="form-group p-1">
-        <h5> ${frmJson[i].label}</h5>
-        <input type="file" id="myFile" name="filename">
-        <input type="submit">
-        </div>
-        </section>`
+        <label class="form-label" for="customFile">Default file input example</label>
+        <input type="file" class="form-control" id="file"/>`
     }
     if (frmJson[i].type == 'Rating') {
         frmHTML = `${frmHTML}<br><h5> ${frmJson[i].label}</h5>
@@ -330,14 +325,17 @@ for (let i = 0; i < frmJson.length; i++) {
     }
     if(frmJson[i].type == 'signature'){
         frmHTML = `${frmHTML}<br><br><br>
-        <form class="signature-pad-form float-none" action="#" method="POST">
-        <p><b>Signature</b></p>
-        <canvas height="100" width="300" class="signature-pad"></canvas>
-        <p><a href="#" class="clear-button">Clear</a></p>
-      </form>
+        <section class="signature-component">
+        <h5>Signature</h5>
+        <canvas id="signature-pad" width="400" height="200"></canvas>
+      
+        <div>
+          <button id="clear">Clear</button>
+        </div>
+      </section>
       <script src="app.js"></script>`
     }
-}
+} 
 document.getElementById('dynamicFrm').innerHTML = frmHTML;
 // document.getElementById('jsonForm').innerText = JSON.stringify(frmJson);
 function onsaveclick() {
@@ -361,7 +359,8 @@ function onsaveclick() {
                         getErrMsgControl(frmJson[i].id).classList.remove('d-none');
                         getErrMsgControl(frmJson[i].id).innerHTML = frmJson[i].validateType.rule.message.replace('{LABEL}', frmJson[i].label);
                         break;
-                    } else {
+                    }
+                    else {
                         if (frmJson[i].type == 'email') {
                             if (!getControl(frmJson[i].id).value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
                                 getErrMsgControl(frmJson[i].id).innerHTML = frmJson[i].validateType.rule.message.replace('{LABEL}', frmJson[i].label);
@@ -382,8 +381,9 @@ function onsaveclick() {
                     }
                 }
             }
-        }    
+        } 
     }
+
     if (isFrmValid) {
         console.log(frm);
     }
@@ -396,3 +396,24 @@ function getControl(elemId) {
 function getErrMsgControl(elemId) {
     return document.getElementById(elemId + '_err');
 }
+
+/* ===============Signature================ */
+
+var canvas = document.getElementById("signature-pad");
+
+       function resizeCanvas() {
+           var ratio = Math.max(window.devicePixelRatio || 1, 2);
+           canvas.width = canvas.offsetWidth * ratio;
+           canvas.height = canvas.offsetHeight * ratio;
+           canvas.getContext("2d").scale(ratio, ratio);
+       }
+       window.onresize = resizeCanvas;
+       resizeCanvas();
+
+       var signaturePad = new SignaturePad(canvas, {
+        backgroundColor: 'rgb(250,250,250)'
+       });
+
+       document.getElementById("clear").addEventListener('click', function(){
+        signaturePad.clear();
+       })

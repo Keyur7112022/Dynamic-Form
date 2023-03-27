@@ -50,32 +50,34 @@
 
 
 /* ===============Signature================ */
-:root {
-    --primary-color: #000;
-  }
-  .signature-pad-form {
-    max-width: 300px;
-    margin: 0 auto;
-  }
-  .signature-pad {
-    cursor: url(pen.png) 1 26, pointer;
-    border: 2px solid var(--primary-color);
-    border-radius: 4px;
-  }
-  .clear-button {
-    color: var(--primary-color);
-  }
-  .submit-button {
-    width: 100%;
-    background-color: var(--primary-color);
-    border: none;
-    padding: 0.5rem 1rem;
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+.flex-row {
+    display: flex;
+}
+.wrapper {
+    border: 1px solid #4b00ff;
+    border-right: 0;
+}
+canvas#signature-pad {
+    background: #fff;
+    width: 150%;
+    height: 100%;
+    cursor: crosshair;
+}
+button#clear {
+    height: 100%;
+    background: #796d97;
+    border: 1px solid transparent;
     color: #fff;
+    font-weight: 600;
     cursor: pointer;
-    margin-top: 2rem;
-  }
-  @media (pointer: coarse) {
-    body {
-      overflow: hidden; /* Needed to prevent the vertical scroll on touch devices */
-    }
-  }
+}
+button#clear span {
+    transform: rotate(90deg);
+    display: block;
+}
