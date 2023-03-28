@@ -222,6 +222,23 @@ let frmJson = [{
             message: '{LABEL} selection is required!'
         }
     }
+},{
+    type: 'recaptcha-V2',
+    id: 'recaptcha',
+    class: '',
+    label: '',
+    col: 'col-8',
+    Option: [],
+    validateType: {
+        isValidate: true,
+        rule: {
+            require: true,
+            minLength: 0,
+            isEmail: false,
+            isNumeric: false,
+            message: '{LABEL} selection is required!'
+        }
+    }
 }, {
     type: 'button',
     id: 'btnSave',
@@ -343,6 +360,14 @@ for (let i = 0; i < frmJson.length; i++) {
         </div>
       </section>
       <script src="app.js"></script>`;
+    }
+    if(frmJson[i].type == 'recaptcha-V2'){
+        frmHTML = `${frmHTML}<br><br>
+        <div class="g-recaptcha" data-sitekey="6LfBaDolAAAAAL62L2khchXawb_8Y6B5zOfdWch2"></div>`
+    }
+    if(frmJson[i].type == 'recaptcha-V3'){
+        frmHTML = `${frmHTML}<br><br>
+        <div class="g-recaptcha" data-sitekey=""></div>`
     }
 } 
 document.getElementById('dynamicFrm').innerHTML = frmHTML;
