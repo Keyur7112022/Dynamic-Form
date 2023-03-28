@@ -139,7 +139,7 @@ let frmJson = [{
     }
 }, {
     type: 'time',
-    id: 'time',
+    id: 'appt',
     class: 'form-control',
     label: '',
     css: 'color:black',
@@ -190,7 +190,7 @@ let frmJson = [{
     }
 }, {
     type: 'Rating',
-    id: 'btnCheck',
+    id: 'star',
     class: '',
     label: 'Rate The Clinic',
     col: 'col-8',
@@ -273,7 +273,7 @@ for (let i = 0; i < frmJson.length; i++) {
     if (frmJson[i].type == 'textarea') {
         console.log("come for textarea");
         frmHTML = `${frmHTML}
-        <div class="mb-3 ${frmJson[i].col}">
+        <div class="form-group mb-3 ${frmJson[i].col}">
         <label for="exampleFormControlTextarea1" style="${frmJson[i].css}" class="form-label" style="${frmJson[i].css}">${frmJson[i].label}</label>
         <textarea class="form-control" id="${frmJson[i].id}"  style="${frmJson[i].css}" rows="${frmJson[i].row}"></textarea>
       </div><div id="${frmJson[i].id}_err" class="d-none invalid-feedback">
@@ -290,7 +290,7 @@ for (let i = 0; i < frmJson.length; i++) {
         for (let j = 0; j < frmJson[i].Option.length; j++) {
             console.log(j, frmJson[i].Option[j]);
             const newData = `<section>
-            <div class="form-check ${frmJson[i].col} p-1">
+            <div class="form-group ${frmJson[i].col} p-1">
             <label for="flexCheckDefault" style="${frmJson[i].css}">${frmJson[i].Option[j]}</label>
             <input type="${frmJson[i].type}" class="${frmJson[i].class}" id="${frmJson[i].id}" style="${frmJson[i].css}"/>
             <div id="${frmJson[i].id}_err" class="d-none invalid-feedback"></div>
@@ -305,36 +305,38 @@ for (let i = 0; i < frmJson.length; i++) {
     if (frmJson[i].type == 'file-upload') {
         frmHTML = `${frmHTML}
         <br>
+        <div class="form-group ${frmJson[i].col}">
         <label class="form-label" for="customFile">${frmJson[i].label}</label>
-        <input type="file" class="form-control" id="${frmJson[i].id}"/>
+        <input type="file" class="form-control" id="${frmJson[i].id}" multiple/>
+<br><button class="btn btn-primary" onclick="validateFileType()">Upload</button></div>
         <div id="${frmJson[i].id}_err" class="d-none invalid-feedback">
         </div>`;
     }
     if (frmJson[i].type == 'Rating') {
         frmHTML = `${frmHTML}<br><h5> ${frmJson[i].label}</h5>
-        <div class="rating p-2">
+        <div class="form-group rating p-2">
         <br>
-        <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
-        <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
-        <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
-        <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
-        <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+        <input type="radio" id="${frmJson[i].id}" name="rating" value="5" /><label for="star5"></label>
+        <input type="radio" id="${frmJson[i].id}" name="rating" value="4" /><label for="star4"></label>
+        <input type="radio" id="${frmJson[i].id}" name="rating" value="3" /><label for="star3"></label>
+        <input type="radio" id="${frmJson[i].id}" name="rating" value="2" /><label for="star2"></label>
+        <input type="radio" id="${frmJson[i].id}" name="rating" value="1" /><label for="star1"></label>
         <div>
         <div id="${frmJson[i].id}_err" class="d-none invalid-feedback">
         </div>`;
     }
     if (frmJson[i].type == 'time') {
         frmHTML = `${frmHTML}
-        <div class="p-3">
+        <div class="form-group p-3">
         <label for="appt"><h5>Select a time:</h5></label><br>
-        <input type="time" id="${frmJson[i].id}" name="appt"> 
+        <input type="time" id="${frmJson[i].id}" > 
         </div>
         <div id="${frmJson[i].id}_err" class="d-none invalid-feedback">
         </div>`;
     }
     if (frmJson[i].type == 'drop-down') {
         frmHTML = `${frmHTML}<section>
-        <div class="btn-group float-end">
+        <div class="form-group btn-group float-end">
         <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
          ${frmJson[i].label}
         </button>
@@ -350,7 +352,7 @@ for (let i = 0; i < frmJson.length; i++) {
     }
     if(frmJson[i].type == 'signature'){
         frmHTML = `${frmHTML}<br><br><br>
-        <section class="signature-component">
+        <div class="form-group signature-component">
         <h5>Signature</h5>
         <canvas id="${frmJson[i].id}" width="400" height="200"></canvas>
         <div>
@@ -358,12 +360,12 @@ for (let i = 0; i < frmJson.length; i++) {
         </div>
         <div id="${frmJson[i].id}_err" class="d-none invalid-feedback">
         </div>
-      </section>
+      </div>
       <script src="app.js"></script>`;
     }
     if(frmJson[i].type == 'recaptcha-V2'){
         frmHTML = `${frmHTML}<br><br>
-        <div class="g-recaptcha" data-sitekey="6LfBaDolAAAAAL62L2khchXawb_8Y6B5zOfdWch2"></div>`
+        <div class="form-group g-recaptcha" data-sitekey="6LfBaDolAAAAAL62L2khchXawb_8Y6B5zOfdWch2"></div>`
     }
     if(frmJson[i].type == 'recaptcha-V3'){
         frmHTML = `${frmHTML}<br><br>
@@ -380,7 +382,8 @@ function onsaveclick() {
         email: document.getElementById('txEmail').value,
         password: document.getElementById('txPassword').value,
         terms: document.getElementById('btnCheck').checked,
-        Date_of_birthday: document.getElementById('txtDob').value
+        Date_of_birthday: document.getElementById('txtDob').value,
+        signature:document.getElementById('signature-pad').value
     };
     for (let i = 0; i < frmJson.length; i++) {
         if ('validateType' in frmJson[i]) {
@@ -451,3 +454,34 @@ var canvas = document.getElementById("signature-pad");
        document.getElementById("clear").addEventListener('click', function(){
         signaturePad.clear();
        })
+       
+//    ===============Signature Complete================
+
+ /* javascript function to validate file type */
+ function validateFileType() {
+    var inputElement = document.getElementById('file-upload');
+    var files = inputElement.files;
+    if(files.length==0){
+        alert("Please choose a file first...");
+        return false;
+    }else{
+        var filename = files[0].name;
+
+        /* getting file extenstion eg- .jpg,.png, etc */
+        var extension = filename.substr(filename.lastIndexOf("."));
+
+        /* define allowed file types */
+        var allowedExtensionsRegx = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+        /* testing extension with regular expression */
+        var isAllowed = allowedExtensionsRegx.test(extension);
+
+        if(isAllowed){
+            alert("File type is valid for the upload");
+            /* file upload logic goes here... */
+        }else{
+            alert("Invalid File Type.");
+            return false;
+        }
+    }
+}
