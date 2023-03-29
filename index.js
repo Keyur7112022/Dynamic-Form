@@ -239,6 +239,23 @@ let frmJson = [{
             message: '{LABEL} selection is required!'
         }
     }
+},{
+    type: 'recaptcha-V3',
+    id: 'recaptcha',
+    class: '',
+    label: '',
+    col: 'col-8',
+    Option: [],
+    validateType: {
+        isValidate: true,
+        rule: {
+            require: true,
+            minLength: 0,
+            isEmail: false,
+            isNumeric: false,
+            message: '{LABEL} selection is required!'
+        }
+    }
 }, {
     type: 'button',
     id: 'btnSave',
@@ -267,7 +284,7 @@ for (let i = 0; i < frmJson.length; i++) {
         console.log("come for button");
         frmHTML = `${frmHTML}<br><br>
         <div class="${frmJson[i].col} p-2">
-        <button type="${frmJson[i].type}" class="${frmJson[i].class}" id="${frmJson[i].id}" onclick="onsaveclick()">${frmJson[i].label}</button>
+        <button type="${frmJson[i].type}" class="${frmJson[i].class} btn-lg" id="${frmJson[i].id}" onclick="onsaveclick()">${frmJson[i].label}</button>
         </div>`;
     } 
     if (frmJson[i].type == 'textarea') {
@@ -308,7 +325,8 @@ for (let i = 0; i < frmJson.length; i++) {
         <div class="form-group ${frmJson[i].col}">
         <label class="form-label" for="customFile">${frmJson[i].label}</label>
         <input type="file" class="form-control" id="${frmJson[i].id}" multiple/>
-<br><button class="btn btn-primary" onclick="validateFileType()">Upload</button></div>
+        <br>
+        <button class="btn btn-primary btn-sm" onclick="validateFileType()">Upload</button></div>
         <div id="${frmJson[i].id}_err" class="d-none invalid-feedback">
         </div>`;
     }
@@ -356,7 +374,8 @@ for (let i = 0; i < frmJson.length; i++) {
         <h5>Signature</h5>
         <canvas id="${frmJson[i].id}" width="400" height="200"></canvas>
         <div>
-          <button id="clear" class="btn btn-primary">Clear</button>
+          <button id="clear" class="btn btn-primary btn-sm">Clear</button>
+          <button id="clear" class="btn btn-primary btn-sm" onclick="onb64()">Submit</button>
         </div>
         <div id="${frmJson[i].id}_err" class="d-none invalid-feedback">
         </div>
@@ -364,12 +383,14 @@ for (let i = 0; i < frmJson.length; i++) {
       <script src="app.js"></script>`;
     }
     if(frmJson[i].type == 'recaptcha-V2'){
-        frmHTML = `${frmHTML}<br><br>
+        frmHTML = `${frmHTML}<br>
+        <br>
         <div class="form-group g-recaptcha" data-sitekey="6LfBaDolAAAAAL62L2khchXawb_8Y6B5zOfdWch2"></div>`
     }
     if(frmJson[i].type == 'recaptcha-V3'){
-        frmHTML = `${frmHTML}<br><br>
-        <div class="g-recaptcha" data-sitekey=""></div>`
+        frmHTML = `${frmHTML}<br>
+        <br>
+        <script src="https://www.google.com/recaptcha/api.js?render=6LdnWD8lAAAAAOqRNWXpDAVFQWGIfaPmQI42Qo08"></script>`
     }
 } 
 document.getElementById('dynamicFrm').innerHTML = frmHTML;
@@ -453,11 +474,11 @@ var canvas = document.getElementById("signature-pad");
 
        document.getElementById("clear").addEventListener('click', function(){
         signaturePad.clear();
-       })
-       
-//    ===============Signature Complete================
+       })       
+//    ===============Signature Complete================ //
 
- /* javascript function to validate file type */
+ 
+// ========Javascript function to validate the Files======== //
  function validateFileType() {
     var inputElement = document.getElementById('file-upload');
     var files = inputElement.files;
@@ -467,21 +488,47 @@ var canvas = document.getElementById("signature-pad");
     }else{
         var filename = files[0].name;
 
-        /* getting file extenstion eg- .jpg,.png, etc */
+        // getting file extension eg- .jpg,.png, etc
         var extension = filename.substr(filename.lastIndexOf("."));
 
-        /* define allowed file types */
+       // define allowed file types 
         var allowedExtensionsRegx = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
 
-        /* testing extension with regular expression */
+        // testing extension with regular expression 
         var isAllowed = allowedExtensionsRegx.test(extension);
 
         if(isAllowed){
             alert("File type is valid for the upload");
-            /* file upload logic goes here... */
+        // file upload logic goes here... 
         }else{
             alert("Invalid File Type.");
             return false;
         }
     }
 }
+
+
+    //   covert to bas64 // 
+    async function onb64(){
+        var canvas = document.getElementById("signature-pad"); //get your canvas
+        var image = canvas.toDataURL("image/png"); //Convert
+        convertImageToBase64(image)
+        // document.getElementById("signature-pad").style.display = "inline";
+        // image = image.replace('data:image/png;base64,', '');
+        // document.getElementById("signature-pad").value = image;
+     function convertImageToBase64(imgUrl) {
+        const image = new Image();
+        image.crossOrigin='anonymous';
+        image.onload = () => {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          canvas.height = image.naturalHeight;
+          canvas.width = image.naturalWidth;
+          ctx.drawImage(image, 0, 0);
+          const base64 =  canvas.toDataURL();
+          console.log(base64);
+        }
+        image.src = imgUrl;
+      }
+    }
+      // End //
