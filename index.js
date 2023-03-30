@@ -206,6 +206,23 @@ let frmJson = [{
         }
     }
 }, {
+    type: 'Rating',
+    id: 'star',
+    class: '',
+    label: 'Rate over service',
+    col: 'col-8',
+    Option: ["Male", "Female", "Other"],
+    validateType: {
+        isValidate: true,
+        rule: {
+            require: true,
+            minLength: 0,
+            isEmail: false,
+            isNumeric: false,
+            message: '{LABEL} selection is required!'
+        }
+    }
+}, {
     type: 'signature',
     id: 'signature-pad',
     class: '',
@@ -282,7 +299,7 @@ for (let i = 0; i < frmJson.length; i++) {
     }
     if (frmJson[i].type == 'button') {
         console.log("come for button");
-        frmHTML = `${frmHTML}<br><br>
+        frmHTML = `${frmHTML}
         <div class="${frmJson[i].col} p-2">
         <button type="${frmJson[i].type}" class="${frmJson[i].class} btn-lg" id="${frmJson[i].id}" onclick="onsaveclick()">${frmJson[i].label}</button>
         </div>`;
@@ -332,16 +349,20 @@ for (let i = 0; i < frmJson.length; i++) {
     }
     if (frmJson[i].type == 'Rating') {
         frmHTML = `${frmHTML}<br><h5> ${frmJson[i].label}</h5>
-        <div class="form-group rating p-2">
-        <br>
-        <input type="radio" id="${frmJson[i].id}" name="rating" value="5" /><label for="star5"></label>
-        <input type="radio" id="${frmJson[i].id}" name="rating" value="4" /><label for="star4"></label>
-        <input type="radio" id="${frmJson[i].id}" name="rating" value="3" /><label for="star3"></label>
-        <input type="radio" id="${frmJson[i].id}" name="rating" value="2" /><label for="star2"></label>
-        <input type="radio" id="${frmJson[i].id}" name="rating" value="1" /><label for="star1"></label>
-        <div>
-        <div id="${frmJson[i].id}_err" class="d-none invalid-feedback">
-        </div>`;
+        <div class="center">
+        <fieldset class="rating">
+            <input type="radio" id="star5" name="rating" value="5"/><label for="star5" class="full" title="Awesome"></label>
+            <input type="radio" id="star4.5" name="rating" value="4.5"/><label for="star4.5" class="half"></label>
+            <input type="radio" id="star4" name="rating" value="4"/><label for="star4" class="full"></label>
+            <input type="radio" id="star3.5" name="rating" value="3.5"/><label for="star3.5" class="half"></label>
+            <input type="radio" id="star3" name="rating" value="3"/><label for="star3" class="full"></label>
+            <input type="radio" id="star2.5" name="rating" value="2.5"/><label for="star2.5" class="half"></label>
+            <input type="radio" id="star2" name="rating" value="2"/><label for="star2" class="full"></label>
+            <input type="radio" id="star1.5" name="rating" value="1.5"/><label for="star1.5" class="half"></label>
+            <input type="radio" id="star1" name="rating" value="1"/><label for="star1" class="full"></label>
+            <input type="radio" id="star0.5" name="rating" value="0.5"/><label for="star0.5" class="half"></label>
+        </fieldset>
+    </div><br><br>`;
     }
     if (frmJson[i].type == 'time') {
         frmHTML = `${frmHTML}
@@ -532,3 +553,6 @@ var canvas = document.getElementById("signature-pad");
       }
     }
       // End //
+
+
+  
