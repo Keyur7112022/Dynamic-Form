@@ -26,7 +26,6 @@ let frmJson = [{
         label: 'First Name',
         place:'Your First Name',
         css: 'color:black',
-        col: 'col-6',
         validateType: {
             isValidate: true,
             rule: {
@@ -43,7 +42,6 @@ let frmJson = [{
         class: 'form-control',
         label: 'Last Name',
         css: 'color:black',
-        col: 'col-6',
         validateType: {
             isValidate: true,
             rule: {
@@ -64,8 +62,6 @@ let frmJson = [{
         class: 'form-control',
         label: 'Address',
         css: 'color:black',
-        col: 'col-6',
-        row: '1',
         validateType: {
             isValidate: true,
             rule: {
@@ -86,7 +82,6 @@ let frmJson = [{
         class: 'form-control',
         label: 'Mobile.no',
         css: 'color:black',
-        col: 'col-6',
         validateType: {
             isValidate: true,
             rule: {
@@ -103,7 +98,6 @@ let frmJson = [{
         class: 'form-control',
         label: 'Email*',
         css: 'color:black',
-        col: 'col-6',
         validateType: {
             isValidate: true,
             rule: {
@@ -120,7 +114,6 @@ let frmJson = [{
         class: 'form-control',
         label: 'Password*',
         css: 'color:black',
-        col: 'col-6',
         validateType: {
             isValidate: true,
             rule: {
@@ -137,7 +130,6 @@ let frmJson = [{
         class: 'form-control',
         label: 'Date Of Birth',
         css: 'color:black',
-        col: 'col-6',
         validateType: {
             isValidate: true,
             rule: {
@@ -158,7 +150,6 @@ let frmJson = [{
         class: 'form-control',
         label: '',
         css: 'color:black',
-        col: 'col-6',
         validateType: {
             isValidate: true,
             rule: {
@@ -169,25 +160,7 @@ let frmJson = [{
                 message: '{LABEL} is required!'
             }
         }
-},{
-    type: 'drop-down',
-    id: 'txFName',
-    class: 'form-control',
-    label: 'tech',
-    css: 'color:black',
-    title: 'Bootstrap',
-    Option: ["version5.3", "version4.0","version3.0"],
-    validateType: {
-        isValidate: false,
-        rule: {
-            require: true,
-            minLength: 0,
-            isEmail: false,
-            isNumeric: false,
-            message: '{LABEL} is required!'
-        }
-    }
-},]
+}]
 },{
     type:'row',
     col:[{
@@ -195,7 +168,6 @@ let frmJson = [{
     id: 'btnCheck',
     class: '',
     label: 'Select Your Gender',
-    col: 'col-8',
     Option: ["Male", "Female", "Other"],
     validateType: {
         isValidate: true,
@@ -215,7 +187,6 @@ let frmJson = [{
         id: 'file-upload',
         class: '',
         label: 'Please Upload Mentioned doc.',
-        col: 'col-6',
         validateType: {
             isValidate: true,
             rule: {
@@ -234,7 +205,7 @@ let frmJson = [{
         id: 'star',
         class: '',
         label: 'Rate The Clinic',
-        Option: ["Male", "Female", "Other"],
+        Option: [],
         validateType: {
             isValidate: true,
             rule: {
@@ -272,7 +243,6 @@ let frmJson = [{
         id: 'recaptcha',
         class: '',
         label: '',
-        col: 'col-8',
         Option: [],
         validateType: {
             isValidate: true,
@@ -290,7 +260,6 @@ let frmJson = [{
     id: 'recaptcha',
     class: '',
     label: '',
-    col: 'col-8',
     Option: [],
     validateType: {
         isValidate: true,
@@ -308,9 +277,10 @@ let frmJson = [{
     type: 'button',
     id: 'btnSave',
     class: 'btn btn-primary',
-    col: 'col-6',
+
     label: 'Save'
-}]}];
+}]
+}];
 
 let frmHTML = '';
 for (let i = 0; i < frmJson.length; i++) {
@@ -325,7 +295,6 @@ for (let i = 0; i < frmJson.length; i++) {
          <br>`;
     }
     if (frmJson[i].type == 'text' || frmJson[i].type == 'email' || frmJson[i].type == 'date' || frmJson[i].type == 'password') {
-        console.log("come for input");
         frmHTML = `${frmHTML}
         <div class="form-group  p-2">
         <label for="${frmJson[i].id}" style="${frmJson[i].css}">${frmJson[i].label}</label>
@@ -335,14 +304,14 @@ for (let i = 0; i < frmJson.length; i++) {
         </div>`;
     }
     if (frmJson[i].type == 'button') {
-        console.log("come for button");
+    
         frmHTML = `${frmHTML}
         <div class=" p-2">
         <button type="${frmJson[i].type}" class="${frmJson[i].class} btn-lg" id="${frmJson[i].id}" onclick="onsaveclick()">${frmJson[i].label}</button>
         </div>`;
     } 
     if (frmJson[i].type == 'textarea') {
-        console.log("come for textarea");
+        
         frmHTML = `${frmHTML}
         <div class="form-group mb-3 ">
         <label for="exampleFormControlTextarea1" style="${frmJson[i].css}" class="form-label" style="${frmJson[i].css}">${frmJson[i].label}</label>
@@ -352,13 +321,12 @@ for (let i = 0; i < frmJson.length; i++) {
       </div>`;
     }
     if (frmJson[i].type == 'checkbox' || frmJson[i].type == 'radio') {
-        console.log("come for checkbox");
+       
         frmHTML = `${frmHTML}<div class="form-group p-4">
         <h5> ${frmJson[i].label}</h5>
         <div>`;
         let postData = ""
         for (let j = 0; j < frmJson[i].Option.length; j++) {
-            console.log(j, frmJson[i].Option[j]);
             const newData = `<section>
             <div class="form-group  p-1">
             <label for="flexCheckDefault" style="${frmJson[i].css}">${frmJson[i].Option[j]}</label>
@@ -568,7 +536,7 @@ var canvas = document.getElementById("signature-pad");
 }
 
 
-    //   covert to bas64 // 
+    //  Signature covert to bas64 // 
     async function onb64(){
         var canvas = document.getElementById("signature-pad"); //get your canvas
         var image = canvas.toDataURL("image/png"); //Convert
@@ -596,17 +564,12 @@ var canvas = document.getElementById("signature-pad");
 
     // column function
     function column(frmJson){
-        console.log(frmJson,'sdhfsf')
         let tempDiv = '';
         for (k = 0; k < frmJson.col.length; k++){
-            console.log("row",Rowconditon(frmJson.col[k]));
-              const metData = `<div class="col" style=" border:1px solid red">
+              const metData = `<div class="col">
                       ${Rowconditon(frmJson.col[k])}
-                </div>`; 
-                console.log("metData",metData);
-                tempDiv = `${tempDiv} ${metData} ` 
-
-                console.log(tempDiv,"lklkl");    
+                </div>`;
+                tempDiv = `${tempDiv} ${metData}`;        
             }
             return tempDiv
         }
@@ -614,7 +577,6 @@ var canvas = document.getElementById("signature-pad");
 
 // condtion
     function Rowconditon(frmJson){
-        console.log(frmJson,'test-json');
    if (frmJson.type == 'text' || frmJson.type == 'email' || frmJson.type == 'date' || frmJson.type =='password') 
 {
                 console.log("come for [col] input");
@@ -636,33 +598,32 @@ var canvas = document.getElementById("signature-pad");
             if (frmJson.type == 'textarea') {
                 console.log("come for textarea");
                 return `
-                <div class="form-group mb-3 ">
+                <div class="form-group">
                 <label for="exampleFormControlTextarea1" style="${frmJson.css}" class="form-label" style="${frmJson.css}">${frmJson.label}</label>
                 <textarea class="form-control" id="${frmJson.id}"  style="${frmJson.css}" rows="${frmJson.row}"></textarea>
-              </div><div id="${frmJson.id}_err" class="d-none invalid-feedback">
-              </div>
+              </div><div id="${frmJson.id}_err" class="d-none invalid-feedback"></div>
               </div>`;
             }
             if (frmJson.type == 'checkbox' || frmJson.type == 'radio') {
-                console.log("come for checkbox");
-                frmHTML = `${frmHTML}<div class="form-group p-4">
+             
+                 `<div class="form-group">
                 <h5> ${frmJson.label}</h5>
                 <div>`;
-                let postData = ""
+                let postData = ''
                 for (let j = 0; j < frmJson.Option.length; j++) {
                     console.log(j, frmJson.Option[j],'checkbox');
-                    const newData = `<section>
-                    <div class="form-group  p-1">
-                    <label for="flexCheckDefault" style="${frmJson.css}">${frmJson.Option}</label>
+                    const newData = `
+                    <div class="form-group">
+                    <label for="flexCheckDefault" style="${frmJson.css}">${frmJson.Option[j]}</label>
                     <input type="${frmJson.type}" class="${frmJson.class}" id="${frmJson.id}" style="${frmJson.css}"/>
                     <div id="${frmJson.id}_err" class="d-none invalid-feedback"></div>
-                    </div>
-                    </section>`;
+                    </div>`;
         
                     postData = `${postData} ${newData} `
                 }
         
                 frmHTML = `${frmHTML} ${postData}`
+                return postData
             }
             if (frmJson.type == 'file-upload') {
                 return `
@@ -738,7 +699,7 @@ var canvas = document.getElementById("signature-pad");
                return`
                 <div class="form-group g-recaptcha" data-sitekey="6LfBaDolAAAAAL62L2khchXawb_8Y6B5zOfdWch2"></div>`
             }
-            if(frmJson.type   == 'recaptcha-V3'){
+            if(frmJson.type  == 'recaptcha-V3'){
                return`<br>
                 <br>
                 <script src="https://www.google.com/recaptcha/api.js?render=6LdnWD8lAAAAAOqRNWXpDAVFQWGIfaPmQI42Qo08"></script>`
