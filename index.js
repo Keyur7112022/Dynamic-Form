@@ -1,13 +1,11 @@
-let ratingStar = 0;
 let frmJson = [{
     type: 'drop-down',
-    id: 'txFName',
+    id: '',
     class: 'form-control',
     label: 'Bootstrap',
     css: 'color:black',
     title: 'Bootstrap',
     Option: ["version5.3", "version4.0", "version3.0"],
-    col: 'col-6',
     validateType: {
         isValidate: false,
         rule: {
@@ -15,7 +13,6 @@ let frmJson = [{
             minLength: 0,
             isEmail: false,
             isNumeric: false,
-            message: '{LABEL} is required!'
         }
     }
 }, {
@@ -27,7 +24,6 @@ let frmJson = [{
         label: 'First Name',
         place: 'Your First Name',
         css: 'color:black',
-        col: 'col-6',
         validateType: {
             isValidate: true,
             rule: {
@@ -43,8 +39,8 @@ let frmJson = [{
         id: 'txLName',
         class: 'form-control',
         label: 'Last Name',
+        place: 'Your Last Name',
         css: 'color:black',
-        col: 'col-6',
         validateType: {
             isValidate: true,
             rule: {
@@ -64,9 +60,8 @@ let frmJson = [{
         id: 'txAdd',
         class: 'form-control',
         label: 'Address',
+        place: 'Your Address',
         css: 'color:black',
-        col: 'col-6',
-        row: '1',
         validateType: {
             isValidate: true,
             rule: {
@@ -82,12 +77,12 @@ let frmJson = [{
 {
     type: 'row',
     col: [{
-        type: 'text',
-        id: 'txMob',
+        type: 'number',
+        id: 'typeNumber',
         class: 'form-control',
         label: 'Mobile.no',
+        place: 'Your Mob.no',
         css: 'color:black',
-        col: 'col-6',
         validateType: {
             isValidate: true,
             rule: {
@@ -103,8 +98,8 @@ let frmJson = [{
         id: 'txEmail',
         class: 'form-control',
         label: 'Email*',
+        place: 'Your Email',
         css: 'color:black',
-        col: 'col-6',
         validateType: {
             isValidate: true,
             rule: {
@@ -120,8 +115,8 @@ let frmJson = [{
         id: 'txPassword',
         class: 'form-control',
         label: 'Password*',
+        place: 'Your Password',
         css: 'color:black',
-        col: 'col-6',
         validateType: {
             isValidate: true,
             rule: {
@@ -138,7 +133,6 @@ let frmJson = [{
         class: 'form-control',
         label: 'Date Of Birth',
         css: 'color:black',
-        col: 'col-6',
         validateType: {
             isValidate: true,
             rule: {
@@ -159,7 +153,6 @@ let frmJson = [{
         class: 'form-control',
         label: '',
         css: 'color:black',
-        col: 'col-6',
         validateType: {
             isValidate: true,
             rule: {
@@ -174,14 +167,13 @@ let frmJson = [{
 }, {
     type: 'row',
     col: [{
-        type: 'checkbox',
+        type: 'radio',
         id: 'btnCheck',
         class: '',
         label: 'Select Your Gender',
-        col: 'col-8',
         Option: ["Male", "Female", "Other"],
         validateType: {
-            isValidate: true,
+            isValidate: false,
             rule: {
                 require: true,
                 minLength: 0,
@@ -198,7 +190,6 @@ let frmJson = [{
         id: 'file-upload',
         class: '',
         label: 'Please Upload Mentioned doc.',
-        col: 'col-6',
         validateType: {
             isValidate: true,
             rule: {
@@ -217,9 +208,9 @@ let frmJson = [{
         id: 'star',
         class: '',
         label: 'Rate The Clinic',
-        Option: ["Male", "Female", "Other"],
+        Option: [],
         validateType: {
-            isValidate: true,
+            isValidate: false,
             rule: {
                 require: true,
                 minLength: 0,
@@ -238,7 +229,7 @@ let frmJson = [{
         label: '',
         Option: [],
         validateType: {
-            isValidate: true,
+            isValidate: false,
             rule: {
                 require: true,
                 minLength: 0,
@@ -255,10 +246,9 @@ let frmJson = [{
         id: 'recaptcha',
         class: '',
         label: '',
-        col: 'col-8',
         Option: [],
         validateType: {
-            isValidate: true,
+            isValidate: false,
             rule: {
                 require: true,
                 minLength: 0,
@@ -273,10 +263,9 @@ let frmJson = [{
     id: 'recaptcha',
     class: '',
     label: '',
-    col: 'col-8',
     Option: [],
     validateType: {
-        isValidate: true,
+        isValidate: false,
         rule: {
             require: true,
             minLength: 0,
@@ -291,7 +280,6 @@ let frmJson = [{
         type: 'button',
         id: 'btnSave',
         class: 'btn btn-primary',
-        col: 'col-6',
         label: 'Save'
     }]
 }];
@@ -301,170 +289,47 @@ for (let i = 0; i < frmJson.length; i++) {
     // console.log((i + 1) + "coming for" + frmJson[i].type);
     if (frmJson[i].type == 'row') {
         frmHTML = `${frmHTML}
-        <div class="container p-1">
+        <div class="container p-2">
              <div class="row">
                 ${column(frmJson[i])}
              </div>
          </div>
          <br>`;
     }
-    /* if (frmJson[i].type == 'text' || frmJson[i].type == 'email' || frmJson[i].type == 'date' || frmJson[i].type == 'password') {
-        // console.log("come for input");
-        frmHTML = `${frmHTML}
-        <div class="form-group  p-2">
-        <label for="${frmJson[i].id}" style="${frmJson[i].css}">${frmJson[i].label}</label>
-        <input type="${frmJson[i].type}"  class="${frmJson[i].class}" id="${frmJson[i].id}" style="${frmJson[i].css}"/>
-        <div id="${frmJson[i].id}_err" class="d-none invalid-feedback">
-        </div>
-        </div>`;
-    }
-    if (frmJson[i].type == 'button') {
-        // console.log("come for button");
-        frmHTML = `${frmHTML}
-        <div class=" p-2">
-        <button type="${frmJson[i].type}" class="${frmJson[i].class} btn-lg" id="${frmJson[i].id}" onclick="onsaveclick()">${frmJson[i].label}</button>
-        </div>`;
-    }
-    if (frmJson[i].type == 'textarea') {
-        // console.log("come for textarea");
-        frmHTML = `${frmHTML}
-        <div class="form-group mb-3 ">
-        <label for="exampleFormControlTextarea1" style="${frmJson[i].css}" class="form-label" style="${frmJson[i].css}">${frmJson[i].label}</label>
-        <textarea class="form-control" id="${frmJson[i].id}"  style="${frmJson[i].css}" rows="${frmJson[i].row}"></textarea>
-      </div><div id="${frmJson[i].id}_err" class="d-none invalid-feedback">
-      </div>
-      </div>`;
-    }
-    if (frmJson[i].type == 'checkbox' || frmJson[i].type == 'radio') {
-        // console.log("come for checkbox");
-        frmHTML = `${frmHTML}<div class="form-group p-4">
-        <h5> ${frmJson[i].label}</h5>
-        <div>`;
-        let postData = ""
-        for (let j = 0; j < frmJson[i].Option.length; j++) {
-            // console.log(j, frmJson[i].Option[j]);
-            const newData = `<section>
-            <div class="form-group  p-1">
-            <label for="flexCheckDefault" style="${frmJson[i].css}">${frmJson[i].Option[j]}</label>
-            <input type="${frmJson[i].type}" class="${frmJson[i].class}" id="${frmJson[i].id}" style="${frmJson[i].css}"/>
-            <div id="${frmJson[i].id}_err" class="d-none invalid-feedback"></div>
-            </div>
-            </section>`;
-
-            postData = `${postData} ${newData} `
-        }
-
-        frmHTML = `${frmHTML} ${postData}`
-    }
-    if (frmJson[i].type == 'file-upload') {
-        frmHTML = `${frmHTML}
-        <br>
-        <div class="form-group ">
-        <label class="form-label" for="customFile">${frmJson[i].label}</label>
-        <input type="file" class="form-control" id="${frmJson[i].id}" multiple/>
-        <br>
-        <button class="btn btn-primary btn-sm" onclick="validateFileType()">Upload</button></div>
-        <div id="${frmJson[i].id}_err" class="d-none invalid-feedback">
-        </div>`;
-    }
-    if (frmJson[i].type == 'Rating') {
-        frmHTML = `${frmHTML}<br>
-        <h5> 
-        ${frmJson[i].label}
-        </h5>
-        <div class="center">
-        <fieldset class="rating">
-            <input type="radio" id="star5" name="rating" value="5"/><label for="star5" class="full" title="Awesome"></label>
-            <input type="radio" id="star4.5" name="rating" value="4.5"/><label for="star4.5" class="half"></label>
-            <input type="radio" id="star4" name="rating" value="4"/><label for="star4" class="full"></label>
-            <input type="radio" id="star3.5" name="rating" value="3.5"/><label for="star3.5" class="half"></label>
-            <input type="radio" id="star3" name="rating" value="3"/><label for="star3" class="full"></label>
-            <input type="radio" id="star2.5" name="rating" value="2.5"/><label for="star2.5" class="half"></label>
-            <input type="radio" id="star2" name="rating" value="2"/><label for="star2" class="full"></label>
-            <input type="radio" id="star1.5" name="rating" value="1.5"/><label for="star1.5" class="half"></label>
-            <input type="radio" id="star1" name="rating" value="1"/><label for="star1" class="full"></label>
-            <input type="radio" id="star0.5" name="rating" value="0.5"/><label for="star0.5" class="half"></label>
-        </fieldset>
-    </div>`;
-    }
-    if (frmJson[i].type == 'time') {
-        frmHTML = `${frmHTML}
-        <div class="form-group p-3">
-        <label for="appt"><h5>Select a time:</h5></label><br>
-        <input type="time" id="${frmJson[i].id}" > 
-        </div>
-        <div id="${frmJson[i].id}_err" class="d-none invalid-feedback">
-        </div>`;
-    }
-    if (frmJson[i].type == 'drop-down') {
-        frmHTML = `${frmHTML}<section>
-        <div class="form-group btn-group float-end">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-         ${frmJson[i].label}
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Separated link</a></li>
-        </ul>
-      </div>
-      </section>`;
-    }
-    if (frmJson[i].type == 'signature') {
-        frmHTML = `${frmHTML}<br><br><br>
-        <div class="form-group signature-component">
-        <h5>Signature</h5>
-        <canvas id="${frmJson[i].id}" width="400" height="200"></canvas>
-        <div>
-          <button id="clear" class="btn btn-primary btn-sm">Clear</button>
-          <button id="clear" class="btn btn-primary btn-sm" onclick="onb64()">Submit</button>
-        </div>
-        <div id="${frmJson[i].id}_err" class="d-none invalid-feedback">
-        </div>
-      </div>
-      <script src="app.js"></script>`;
-    }
-    if (frmJson[i].type == 'recaptcha-V2') {
-        frmHTML = `${frmHTML}<br>
-        <br>
-        <div class="form-group g-recaptcha" data-sitekey="6LfBaDolAAAAAL62L2khchXawb_8Y6B5zOfdWch2"></div>`
-    }
-    if (frmJson[i].type == 'recaptcha-V3') {
-        frmHTML = `${frmHTML}<br>
-        <br>
-        <script src="https://www.google.com/recaptcha/api.js?render=6LdnWD8lAAAAAOqRNWXpDAVFQWGIfaPmQI42Qo08"></script>`
-    } */
 }
 document.getElementById('dynamicFrm').innerHTML = frmHTML;
 // document.getElementById('jsonForm').innerText = JSON.stringify(frmJson);
 function onsaveclick() {
-    try {
         let isFrmValid = true;
-        // ON click data is not coming                              ERROR
+        // ON click data is not coming                              
         let frm = {
             firstName: document.getElementById('txFName').value,
             lastName: document.getElementById('txLName').value,
             email: document.getElementById('txEmail').value,
+            address:document.getElementById('txAdd').value,
             password: document.getElementById('txPassword').value,
-            terms: document.getElementById('btnCheck').checked,
+            gender: document.getElementById('btnCheck').value,
+            mobile:document.getElementById('typeNumber').value,
             Date_of_birthday: document.getElementById('txtDob').value,
-            signature: document.getElementById('signature-pad').value
+            Time: document.getElementById('appt').value,
+            File: document.getElementById('file-upload').value,
         };
-        // validation is not working can we add signaturePad validation             ERROR
+
+        // validation is not working can we add signaturePad validation            
         for (let i = 0; i < frmJson.length; i++) {
             if (frmJson[i].type == 'row') {
                 frmJson[i].col.forEach((field) => {
                     if ('validateType' in field) {
                         if (field.validateType.isValidate) {
                             // first check required is true
-                            if (field.validateType.rule.require && field.type != 'email' && field.type != 'rating') {
+                            if (field.validateType.rule.require) {
                                 isFrmValid = false;
+                                console.log(!getControl(field.id).value);
                                 if (!getControl(field.id).value) {
+                                    console.log(getControl(field.id).value,field.id)
                                     getControl(field.id).classList.add('is-invalid');
                                     getErrMsgControl(field.id).classList.remove('d-none');
-                                    getErrMsgControl(field.id).innerHTML = field.validateType.rule.message.replace('{LABEL}', field.label);
+                                    getErrMsgCozntrol(field.id).innerHTML = field.validateType.rule.message.replace('{LABEL}', field.label);
                                     return;
                                 }
                                 else {
@@ -478,17 +343,36 @@ function onsaveclick() {
                                             getErrMsgControl(field.id).classList.add('d-none');
                                             getControl(field.id).classList.remove('is-invalid');
                                         }
-                                    } else if (field.type == 'rating') {
-                                        console.log(field.type);
-                                        if (ratingStar == 0) {
-                                            getErrMsgControl(field.id).innerHTML = field.validateType.rule.message.replace('{LABEL}', field.label);
-                                            isFrmValid = false;
-                                            return;
-                                        } else {
+                                    }else if(field.type == 'file-upload'){
+                                    var inputElement = document.getElementById('file-upload');
+                                    var files = inputElement.files;
+                                    if(files.length == 0){
+                                        getErrMsgControl(field.id).innerHTML = field.validateType.rule.message.replace('{LABEL}', field.label);
+                                        isFrmValid = false;
+                                        return;
+                                    }else {
+                                        var filename = files[0].name;
+                                
+                                        // getting file extension eg- .jpg,.png, etc
+                                        var extension = filename.substr(filename.lastIndexOf("."));
+                                
+                                        // define allowed file types 
+                                        var allowedExtensionsRegx = /(\.jpg|\.jpeg|\.img|\.doc|\.pdf)$/i;
+                                
+                                        // testing extension with regular expression 
+                                        var isAllowed = allowedExtensionsRegx.test(extension);
+                                
+                                        if (isAllowed) {
                                             getErrMsgControl(field.id).classList.add('d-none');
-                                            getControl(field.id).classList.remove('is-invalid');
+                                             getControl(field.id).classList.remove('is-invalid');
+                                            // file upload logic goes here... 
+                                        } else {
+                                            alert("Invalid File Type.");
+                                            return false;
                                         }
-                                    } else {
+                                    }
+                                }
+                                    else {
                                         isFrmValid = true;
                                         if (!getErrMsgControl(field.id).classList.contains('d-none')) {
                                             getErrMsgControl(field.id).classList.add('d-none');
@@ -503,13 +387,10 @@ function onsaveclick() {
             }
 
         }
-
+        console.log(isFrmValid,frm);
         if (isFrmValid) {
             console.log(frm);
         }
-    } catch (error) {
-        console.log(error);
-    }
 }
 
 function getControl(elemId) {
@@ -536,48 +417,21 @@ resizeCanvas();
 var signaturePad = new SignaturePad(canvas, {
     backgroundColor: 'rgb(250,250,250)'
 });
-
 document.getElementById("clear").addEventListener('click', function () {
     signaturePad.clear();
 })
 //    ===============Signature Complete================ //
 
 
-// ========Javascript function to validate the Files======== //
-function validateFileType() {
-    var inputElement = document.getElementById('file-upload');
-    var files = inputElement.files;
-    if (files.length == 0) {
-        alert("Please choose a file first...");
-        return false;
-    } else {
-        var filename = files[0].name;
-
-        // getting file extension eg- .jpg,.png, etc
-        var extension = filename.substr(filename.lastIndexOf("."));
-
-        // define allowed file types 
-        var allowedExtensionsRegx = /(\.jpg|\.jpeg|\.img|\.doc|\.pdf)$/i;
-
-        // testing extension with regular expression 
-        var isAllowed = allowedExtensionsRegx.test(extension);
-
-        if (isAllowed) {
-            alert("File type is valid for the upload");
-            // file upload logic goes here... 
-        } else {
-            alert("Invalid File Type.");
-            return false;
-        }
-    }
-}
 
 
 //   covert to bas64 // 
 async function onb64() {
     var canvas = document.getElementById("signature-pad"); //get your canvas
     var image = canvas.toDataURL("image/png"); //Convert
-    convertImageToBase64(image)
+    console.log("image",canvas.toDataURL("image/png"));
+    // convertImageToBase64(image)
+    
     // document.getElementById("signature-pad").style.display = "inline";
     // image = image.replace('data:image/png;base64,', '');
     // document.getElementById("signature-pad").value = image;
@@ -591,13 +445,12 @@ async function onb64() {
             canvas.width = image.naturalWidth;
             ctx.drawImage(image, 0, 0);
             const base64 = canvas.toDataURL();
-            // console.log(base64);
+            console.log(base64);
         }
         image.src = imgUrl;
     }
 }
 // End //
-
 
 // column function
 function column(frmJson) {
@@ -605,7 +458,7 @@ function column(frmJson) {
     let tempDiv = '';
     for (k = 0; k < frmJson.col.length; k++) {
         // console.log("row",Rowconditon(frmJson.col[k]));
-        const metData = `<div class="col" style=" border:1px solid red">
+        const metData = `<div class="col" >
                       ${Rowconditon(frmJson.col[k])}
                 </div>`;
         // console.log("metData",metData);
@@ -622,13 +475,22 @@ function Rowconditon(frmJson) {
     // console.log(frmJson,'test-json');
     if (frmJson.type == 'text' || frmJson.type == 'email' || frmJson.type == 'date' || frmJson.type == 'password') {
         // console.log("come for [col] input");
-        return `<div class="form-group  p-2">
+        return `<div class="form-group">
                 <label for="${frmJson.id}" style="${frmJson.css}">${frmJson.label}</label>
                 <input type="${frmJson.type}" placeholder="${frmJson.place}" class="${frmJson.class}" id="${frmJson.id}" style="${frmJson.css}"/>
                 <div id="${frmJson.id}_err" class="d-none invalid-feedback">
                 </div>
                 </div>`;
 
+    }
+    if (frmJson.type == 'number') {
+        // console.log("come for [col] input");
+        return `<div class="form-group  ">
+        <label for="${frmJson.id}" style="${frmJson.css}">${frmJson.label}</label>
+        <input type="${frmJson.type}" placeholder="${frmJson.place}" class="${frmJson.class}" id="${frmJson.id}" style="${frmJson.css}"/>
+        <div id="${frmJson.id}_err" class="d-none invalid-feedback">
+        </div>
+        </div>`;
     }
     if (frmJson.type == 'button') {
         // console.log("come for button");
@@ -655,13 +517,12 @@ function Rowconditon(frmJson) {
         let postData = ""
         for (let j = 0; j < frmJson.Option.length; j++) {
             // console.log(j, frmJson.Option[j],'checkbox');
-            const newData = `<section>
+            const newData = `
                     <div class="form-group  p-1">
                     <label for="flexCheckDefault" style="${frmJson.css}">${frmJson.Option[j]}</label>
-                    <input type="${frmJson.type}" class="${frmJson.class}" id="${frmJson.id}" style="${frmJson.css}"/>
+                    <input type="${frmJson.type}" class="${frmJson.class}" id="${frmJson.id}" value="${frmJson.Option[j]}" style="${frmJson.css}"/>
                     <div id="${frmJson.id}_err" class="d-none invalid-feedback"></div>
-                    </div>
-                    </section>`;
+                    </div>`;
 
             postData = `${postData} ${newData} `
         }
@@ -673,10 +534,9 @@ function Rowconditon(frmJson) {
         return `
                 <br>
                 <div class="form-group ">
-                <label class="form-label" for="customFile">${frmJson.label}</label>
-                <input type="file" class="form-control" id="${frmJson.id}" multiple/>
-                <br>
-                <button class="btn btn-primary btn-sm" onclick="validateFileType()">Upload</button></div>
+                <h6>${frmJson.label}<h6>
+                <input type="file" class="form-control" id="${frmJson.id}" accept="image/*,.jpg,.jpeg,.doc,.pdf" multiple/>
+               </div>
                 <div id="${frmJson.id}_err" class="d-none invalid-feedback">
                 </div>`;
     }
@@ -685,21 +545,27 @@ function Rowconditon(frmJson) {
                 <h5> 
                 ${frmJson.label}
                 </h5>
-                <div class="center">
-                <span class="my-rating-9" id="${frmJson.id}"></span>
-                <span class="live-rating"></span>
-                <div id="${frmJson.id}_err" class="d-none invalid-feedback">
-                </div>
-            </div>`;
+                <fieldset class="rate">
+                <input type="radio" id="rating10" name="rating" value="10" onclick="starrating(10)"/><label for="rating10" title="5 stars"></label>
+                <input type="radio" id="rating9" name="rating" value="9" onclick="starrating(9)"/><label class="half" for="rating9" title="4 1/2 stars"></label>
+                <input type="radio" id="rating8" name="rating" value="8" onclick="starrating(8)"/><label for="rating8" title="4 stars"></label>
+                <input type="radio" id="rating7" name="rating" value="7" onclick="starrating(7)"/><label class="half" for="rating7" title="3 1/2 stars"></label>
+                <input type="radio" id="rating6" name="rating" value="6" onclick="starrating(6)"/><label for="rating6" title="3 stars"></label>
+                <input type="radio" id="rating5" name="rating" value="5" onclick="starrating(5)"/><label class="half" for="rating5" title="2 1/2 stars"></label>
+                <input type="radio" id="rating4" name="rating" value="4" onclick="starrating(4)"/><label for="rating4" title="2 stars"></label>
+                <input type="radio" id="rating3" name="rating" value="3" onclick="starrating(3)"/><label class="half" for="rating3" title="1 1/2 stars"></label>
+                <input type="radio" id="rating2" name="rating" value="2" onclick="starrating(2)"/><label for="rating2" title="1 star"></label>
+                <input type="radio" id="rating1" name="rating" value="1" onclick="starrating(1)"/><label class="half" for="rating1" title="1/2 star"></label>
+                </fieldset>`;
     }
     if (frmJson.type == 'time') {
         return `
-                <div class="form-group p-3">
-                <label for="appt"><h5>Select a time:</h5></label><br>
-                <input type="time" id="${frmJson.id}" > 
-                </div>
-                <div id="${frmJson.id}_err" class="d-none invalid-feedback">
-                </div>`;
+        <div class="cs-form">
+        <label for="${frmJson.id}" style="${frmJson.css}">${frmJson.label}</label>
+        <input type="time" class="form-control" id="${frmJson.id}" value="10:05 AM" />
+      </div>
+      <div id="${frmJson.id}_err" class="d-none invalid-feedback">
+      </div>`;
     }
     if (frmJson.type == 'drop-down') {
         return `<section>
@@ -726,18 +592,23 @@ function Rowconditon(frmJson) {
                   <button id="clear" class="btn btn-primary btn-sm">Clear</button>
                   <button id="clear" class="btn btn-primary btn-sm" onclick="onb64()">Submit</button>
                 </div>
-                <div id="${frmJson.id}_err" class="d-none invalid-feedback">
-                </div>
+              </div><div id="${frmJson.id}_err" class="d-none invalid-feedback">
               </div>
               <script src="app.js"></script>`;
     }
     if (frmJson.type == 'recaptcha-V2') {
-        return `
-                <div class="form-group g-recaptcha" data-sitekey="6LfBaDolAAAAAL62L2khchXawb_8Y6B5zOfdWch2"></div>`
+        return ` <div class="form-group g-recaptcha" data-sitekey="6LfBaDolAAAAAL62L2khchXawb_8Y6B5zOfdWch2">
+                </div>`
     }
     if (frmJson.type == 'recaptcha-V3') {
         return `<br>
                 <br>
                 <script src="https://www.google.com/recaptcha/api.js?render=6LdnWD8lAAAAAOqRNWXpDAVFQWGIfaPmQI42Qo08"></script>`
     }
+}
+
+// getting the rating
+function starrating(rt){
+    console.log(rt)
+    return rt
 }

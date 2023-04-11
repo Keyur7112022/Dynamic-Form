@@ -1,55 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dynamic Form</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.3.5/signature_pad.js"></script>
-    <script src="/js/star/jquery.min.js"></script>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-    />
-    <link rel="stylesheet"  href="/css/star/star-rating-svg.css" />
-  </head>
 
-  <body style="background-color: rgb(225, 247, 252)">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dynamic Form</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.3.5/signature_pad.js" ></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+</head>
+
+<body style="background-color: rgb(215, 252, 252);">
     <!-- -------------<Title>-------------  -->
-    <div class="container justify-content-around"><h1>Form Patient</h1></div>
-    <br />
+    <div class="container justify-content-around"><H1>Form Patient</H1></div>
+    <br>
     <!-- -------------<Title End>-------------  -->
 
-    <div class="container justify-content-center">
-      <div class="container row" id="dynamicFrm"></div>
-    </div>
+<div class="container justify-content-center">
+        <div class="container row" id="dynamicFrm"></div>
+</div>
     <!-- <pre class="overflow-scroll" id="jsonForm"></pre> -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-      crossorigin="anonymous"
-    ></script>
-    <script src="/js/star/jquery.star-rating-svg.js"></script>
     <script src="index.js"></script>
-    <script>
-      $(".my-rating-9").starRating({
-        initialRating: 0,
-        disableAfterRate: false,
-        onHover: function (currentIndex, currentRating, $el) {
-          $(".live-rating").text(currentIndex);
-        },
-        onLeave: function (currentIndex, currentRating, $el) {
-          $(".live-rating").text(currentRating);
-          ratingStar = currentRating;
-        },
-      });
-    </script>
-    
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
 </html>
+
