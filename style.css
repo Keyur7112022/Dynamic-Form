@@ -1,84 +1,77 @@
 /* Base setup */
-@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-body {
-    margin: 5%; 
-    text-align: center;
-    background: #111;
-    color: #333; 
-}
+/* @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css); */
+
 h1 {
-    font-size: 2em; 
-    margin-bottom: .5rem;
+  font-size: 2em;
+  margin-bottom: 0.5rem;
 }
 
 /* Ratings widget */
 .rate {
-    display: inline-block;
-    border: 0;
+  display: inline-block;
+  border: 0;
 }
 /* Hide radio */
 .rate > input {
-    display: none;
+  display: none;
 }
 /* Order correctly by floating highest to the right */
 .rate > label {
-    float: right;
+  float: right;
 }
 /* The star of the show */
 .rate > label:before {
-    display: inline-block;
-    font-size: 1.6rem;
-    padding: .3rem .2rem;
-    margin: 0;
-    cursor: pointer;
-    font-family: FontAwesome;
-    content: "\f005 "; /* full star */
+  display: inline-block;
+  font-size: 1.6rem;
+  padding: 0.3rem 0.2rem;
+  margin: 0;
+  cursor: pointer;
+  font-family: FontAwesome;
+  content: "\f005 "; /* full star */
 }
 
 /* Half star trick */
 .rate .half:before {
-    content: "\f089 "; /* half star no outline */
-    position: absolute;
-    padding-right: 0;
+  content: "\f089 "; /* half star no outline */
+  position: absolute;
+  padding-right: 0;
 }
 /* Click + hover color */
 input:checked ~ label, /* color current and previous stars on checked */
-label:hover, label:hover ~ label { color: #f3ef00;  } /* color previous stars on hover */
+label:hover, label:hover ~ label {
+  color: #f3ef00;
+} /* color previous stars on hover */
 
 /* Hover highlights */
 input:checked + label:hover, input:checked ~ label:hover, /* highlight current and previous stars */
-input:checked ~ label:hover ~ label, /* highlight previous selected stars for new rating */
-label:hover ~ input:checked ~ label /* highlight previous selected stars */ { color: #ffd700;  } 
-
-
-
-/* ===============Signature================ */
-
-* {
-    padding: 0;
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
+input:checked ~ label:hover ~ label /* highlight previous selected stars for new rating */
+label:hover ~ input:checked ~ label /* highlight previous selected stars */ {
+  color: #ffd700;
 }
+
+
+/* ==============Signature================ */ 
+
 .flex-row {
-    display: flex;
+  display: flex;
 }
 .wrapper {
-    border: 1px solid #4b00ff;
-    border-right: 0;
+  border: 1px solid #4b00ff;
+  border-right: 0;
 }
 canvas#signature-pad {
-    border:1px solid  #070000;
-    background: #fff;
-    width: 260px;
-    height: 100%;
-    cursor: crosshair;
+  border:1px solid  #070000;
+  background: #fff;
+  width: 260px;
+  height: 120px;
+  cursor: crosshair;
 }
 button#clear span {
-    transform: rotate(90deg);
-    display: block;
+  transform: rotate(90deg);
+  display: block;
 }
 
-/* MobileNumber stop up | down scroll */
+/* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -86,7 +79,6 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
-  }
-  /* END */
+input[type="number"] {
+  -moz-appearance: textfield;
+}

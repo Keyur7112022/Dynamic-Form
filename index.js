@@ -1,377 +1,475 @@
-let frmJson = [
-  {
-    type: "row",
-    col: [
-      {
-        type: "title",
-        title: "Form Patient",
-      },
-    ],
-  },
-  {
-    type: "drop-down",
-    id: "",
-    class: "form-control",
-    label: "Bootstrap",
-    css: "color:black",
-    title: "Bootstrap",
-    Option: ["version5.3", "version4.0", "version3.0"],
-    validateType: {
-      isValidate: false,
-      rule: {
-        require: true,
-        minLength: 0,
-        isEmail: false,
-        isNumeric: false,
-      },
-    },
-  },
-  {
-    type: "row",
-    col: [
-      {
-        type: "text",
-        id: "txFName",
-        class: "form-control",
-        label: "First Name",
-        place: "Your First Name",
-        css: "color:black",
-        validateType: {
-          isValidate: true,
-          rule: {
-            require: true,
-            minLength: 0,
-            isEmail: false,
-            isNumeric: false,
-            message: "{LABEL} is required!",
-          },
-        },
-      },
-      {
-        type: "text",
-        id: "txLName",
-        class: "form-control",
-        label: "Last Name",
-        place: "Your Last Name",
-        css: "color:black",
-        validateType: {
-          isValidate: true,
-          rule: {
-            require: true,
-            minLength: 0,
-            isEmail: false,
-            isNumeric: false,
-            message: "{LABEL} is required!",
-          },
-        },
-      },
-    ],
-  },
-  {
-    type: "row",
-    col: [
-      {
-        type: "textarea",
-        id: "txAdd",
-        class: "form-control",
-        label: "Address",
-        place: "Your Address",
-        css: "color:black",
-        validateType: {
-          isValidate: true,
-          rule: {
-            require: true,
-            minLength: 0,
-            isEmail: false,
-            isNumeric: false,
-            message: "{LABEL} is required!",
-          },
-        },
-      },
-    ],
-  },
-  {
-    type: "row",
-    col: [
-      {
-        type: "number",
-        id: "typeNumber",
-        class: "form-control",
-        label: "Mobile.no",
-        place: "Your Mob.no",
-        css: "color:black",
-        validateType: {
-          isValidate: true,
-          rule: {
-            require: true,
-            minLength: 0,
-            isEmail: false,
-            isNumeric: false,
-            message: "{LABEL} is required!",
-          },
-        },
-      },
-      {
-        type: "email",
-        id: "txEmail",
-        class: "form-control",
-        label: "Email*",
-        place: "Your Email",
-        css: "color:black",
-        validateType: {
-          isValidate: true,
-          rule: {
-            require: true,
-            minLength: 0,
-            isEmail: true,
-            isNumeric: false,
-            message: "{LABEL} is required & enter valid email address!",
-          },
-        },
-      },
-      {
-        type: "password",
-        id: "txPassword",
-        class: "form-control",
-        label: "Password*",
-        place: "Your Password",
-        css: "color:black",
-        validateType: {
-          isValidate: true,
-          rule: {
-            require: true,
-            minLength: 0,
-            isEmail: false,
-            isNumeric: false,
-            message: "{LABEL} is required!",
-          },
-        },
-      },
-      {
-        type: "date",
-        id: "txtDob",
-        class: "form-control",
-        label: "Date Of Birth",
-        css: "color:black",
-        validateType: {
-          isValidate: true,
-          rule: {
-            require: true,
-            minLength: 0,
-            isEmail: false,
-            isNumeric: false,
-            message: "{LABEL} is required!",
-          },
-        },
-      },
-    ],
-  },
-  {
-    type: "row",
-    col: [
-      {
-        type: "time",
-        id: "appt",
-        class: "form-control",
-        label: "Enter the Time",
-        css: "color:black",
-        validateType: {
-          isValidate: true,
-          rule: {
-            require: true,
-            minLength: 0,
-            isEmail: false,
-            isNumeric: false,
-            message: "{LABEL} is required!",
-          },
-        },
-      },
-    ],
-  },
-  {
-    type: "row",
-    col: [
-      {
-        type: "radio",
-        id: "btnradio",
-        class: "",
-        label: "Select Your Gender",
-        Option: ["Male", "Female", "Other"],
-        validateType: {
-          isValidate: false,
-          rule: {
-            require: true,
-            minLength: 0,
-            isEmail: false,
-            isNumeric: false,
-            message: "{LABEL} selection is required!",
-          },
-        },
-      },
-    ],
-  },
-  {
-    type: "row",
-    col: [
-      {
-        type: "file-upload",
-        id: "file-upload",
-        class: "",
-        label: "Please Upload Mentioned doc.",
-        validateType: {
-          isValidate: true,
-          rule: {
-            require: true,
-            minLength: 0,
-            isEmail: false,
-            isNumeric: false,
-            message: "{LABEL} selection is required!",
-          },
-        },
-      },
-    ],
-  },
-  {
-    type: "row",
-    col: [
-      {
-        type: "rating",
-        id: "star",
-        class: "",
-        label: "Rate The Clinic",
-        Option: [],
-        validateType: {
-          isValidate: false,
-          rule: {
-            require: true,
-            minLength: 0,
-            isEmail: false,
-            isNumeric: false,
-            message: "{LABEL} selection is required!",
-          },
-        },
-      },
-    ],
-  },
-  {
-    type: "row",
-    col: [
-      {
-        type: "signature",
-        id: "signature-pad",
-        class: "form-control",
-        label: "SIGNATURE",
-        Option: [],
-        validateType: {
-          isValidate: true,
-          rule: {
-            require: true,
-            minLength: 0,
-            isEmail: false,
-            isNumeric: false,
-            message: "{LABEL} selection is required!",
-          },
-        },
-      },
-    ],
-  },
-  {
-    type: "row",
-    col: [
-      {
-        type: "recaptcha-V2",
-        id: "recaptcha",
-        class: "",
-        label: "",
-        Option: [],
-        validateType: {
-          isValidate: false,
-          rule: {
-            require: true,
-            minLength: 0,
-            isEmail: false,
-            isNumeric: false,
-            message: "{LABEL} selection is required!",
-          },
-        },
-      },
-    ],
-  },
-  {
-    type: "recaptcha-V3",
-    id: "recaptcha",
-    class: "",
-    label: "",
-    Option: [],
-    validateType: {
-      isValidate: false,
-      rule: {
-        require: true,
-        minLength: 0,
-        isEmail: false,
-        isNumeric: false,
-        message: "{LABEL} selection is required!",
-      },
-    },
-  },
-  {
-    type: "row",
-    col: [
-      {
-        type: "button",
-        id: "btnSave",
-        class: "btn btn-primary",
-        label: "Save",
-      },
-    ],
-  },
-];
+///////////// for now this vales are fix but it will be change from api data //////////////////////////////
+let mnvFormId = ``;
+let bootstrapVersion = `5.2.3`;
+let frmJson;
+let mnvFormElement;
+let drawCanvas = true;
+///////////// for now this vales are fix but it will be change from api data //////////////////////////////
 
-const Signatureurl =
-  "data:image/png;base64,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";
+;let MNV = {
+  createForm: function (id, url) {
+    const xobj = new XMLHttpRequest();
+    // true parameter denotes asynchronous
+    xobj.open("GET", url, true);
+    xobj.onreadystatechange = function () {
+      if (xobj.readyState == 4 && xobj.status == "200") {
+        try {
+          const apiData = JSON.parse(xobj.responseText);
+          bootstrapVersion = apiData.bootstrapVersion;
+          mnvFormId = apiData.mnvFormId;
+          frmJson = apiData.frmJson;
+          mnvFormElement = document.getElementById(`mnv_form_${mnvFormId}`);
+          if (mnvFormElement) {
+            parseJsonForTypes(frmJson);
+          } else {
+            console.debug(
+              `Element with it MNV-DynamicFr not found. This element must be exist for render form.`
+            );
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    };
+    xobj.send(null);
+  },
+};
 
-let frmHTML = "";
-for (let i = 0; i < frmJson.length; i++) {
-  // console.log((i + 1) + "coming for" + frmJson[i].type);
-  if (frmJson[i].type == "row") {
-    frmHTML = `${frmHTML}
-        <div class="container p-2">
-             <div class="row" style="border:1px solid red">
-                ${column(frmJson[i])}
-             </div>
-         </div>
-         <br>`;
+function parseJsonForTypes(JsonForm) {
+  if (!(JsonForm instanceof Array)) {
+    console.debug("Json Form is not Array", JsonForm);
+    return;
   }
+  JsonForm.map(function (formItem) {
+    switch (formItem.type) {
+      case "form":
+        addClass(mnvFormElement, formItem.class);
+        addCss(mnvFormElement, formItem.css);
+        const titleEl = document.createElement("div");
+        addClass(titleEl, 'container justify-content-around')
+        // titleEl.classList.add("container");
+        // titleEl.classList.add("justify-content-around");
+        const h1 = document.createElement("h1");
+        h1.innerHTML = formItem.title;
+        titleEl.appendChild(h1);
+        mnvFormElement.appendChild(titleEl);
+        break;
+      case "row":
+        if (mnvFormElement) {
+          const rowEl = document.createElement("div");
+          rowEl.classList.toggle("border");
+          rowEl.classList.toggle("border-danger");
+          rowEl.classList.toggle("container");
+          rowEl.classList.toggle("p2");
+          const rowElc = document.createElement("div");
+          rowElc.classList.toggle("row");
+          rowEl.appendChild(rowElc);
+          for (let index = 0; index < formItem.col.length; index++) {
+            const colEl = document.createElement("div");
+            colEl.classList.toggle("col");
+            colEl.appendChild(createComponent(formItem.col[index]));
+            rowElc.appendChild(colEl);
+          }
+          mnvFormElement.appendChild(rowEl);
+        }
+        break;
+
+      default:
+        break;
+    }
+  });
 }
-document.getElementById("dynamicFrm").innerHTML = frmHTML;
-// document.getElementById('jsonForm').innerText = JSON.stringify(frmJson);
+
+function addClass(el, cls = "") {
+  // set calss
+  cls.split(" ").map(function (cl) {
+    if (cl) {
+      el.classList.add(cl);
+    }
+  });
+}
+
+function addCss(el, css = "") {
+  // set css
+  css.split(/[;]/).map(function (cs) {
+    if (cs) {
+      const csA = cs.split(":");
+      if (csA.length == 2) {
+        el.style[csA[0]] = csA[1];
+      }
+    }
+  });
+}
+
+function optionsExe(prefix = "", el, options = []) {
+  // set options
+  options.map(function (opt) {
+    switch ([prefix, opt.type].join("-")) {
+      case "button-att":
+      case "textarea-att":
+        el.setAttribute(opt.key, opt.val);
+        break;
+      case "button-role":
+        if (opt.val === "submit") {
+          el.setAttribute("click", "onsaveclick()");
+        }
+        break;
+      case "radio-item":
+      case "checkbox-item":
+        let radioLblEl = document.createElement("span");
+        radioLblEl.innerHTML = opt.key;
+        radioLblEl.setAttribute("for", el.getAttribute("id"));
+        el.appendChild(radioLblEl);
+        let radioEl = document.createElement("input");
+        radioEl.setAttribute("type", prefix);
+        radioEl.setAttribute("value", opt.val);
+        radioEl.setAttribute("name", `input_${el.getAttribute("id")}`);
+        radioEl.setAttribute("id", opt.val);
+        el.appendChild(radioEl);
+        break;
+      default:
+        break;
+    }
+  });
+}
+
+function createComponent(item) {
+  let comp = document.createElement("div");
+  comp.classList.toggle("border");
+  comp.classList.toggle("border-primary");
+
+  switch (item.type) {
+    case "text":
+    case "email":
+    case "date":
+    case "password":
+    case "number":
+      comp.classList.toggle("form-group");
+      // add label to form element
+      const txlblEl = document.createElement("label");
+      txlblEl.setAttribute("for", item.id);
+      addCss(txlblEl, item.css);
+      txlblEl.innerHTML = item.label;
+      comp.appendChild(txlblEl);
+      // end add label to form element
+      // add input element to form element
+      let inputEl = document.createElement("input");
+      inputEl.setAttribute("type", item.type);
+      inputEl.setAttribute("placeholder", item.place);
+      inputEl.setAttribute("id", item.id);
+      inputEl.setAttribute("onfocus", "autofocus1(id)");
+      inputEl.setAttribute("onblur", "autoBlur1(id)");
+      addClass(inputEl, item.class);
+      addCss(inputEl, item.css);
+      comp.appendChild(inputEl);
+      // end add input element to form element
+      const txtmsgEl = document.createElement("div");
+      txtmsgEl.setAttribute("id", `${item.id}_err`);
+      txtmsgEl.classList.toggle("d-none");
+      txtmsgEl.classList.toggle("invalid-feedback");
+      comp.appendChild(txtmsgEl);
+      break;
+    // End add TEXT element to form element
+    case "radio":
+    case "checkbox":
+      comp.classList.toggle("form-group");
+      comp.classList.toggle("p-1");
+      const spanEl = document.createElement("span");
+      spanEl.setAttribute("for", item.id);
+      addCss(spanEl, item.css);
+      spanEl.innerHTML = item.label;
+      comp.appendChild(spanEl);
+      // add radio div to form element
+      let divEl = document.createElement("div");
+      divEl.setAttribute("id", item.id);
+      optionsExe(
+        item.type === "checkbox" ? "checkbox" : "radio",
+        divEl,
+        item.option
+      );
+      addClass(divEl, item.class);
+      addCss(divEl, item.css);
+      //validation
+      comp.appendChild(divEl);
+      const radiomsgEl = document.createElement("div");
+      radiomsgEl.setAttribute("id", `${item.id}_err`);
+      radiomsgEl.classList.toggle("d-none");
+      radiomsgEl.classList.toggle("invalid-feedback");
+      comp.appendChild(radiomsgEl);
+      break;
+    // END add RADIO & CHECKBOX div to form element
+    case "button":
+      comp.classList.toggle("p-2");
+      // add btn to form element
+      let svBtnEL = document.createElement("button");
+      svBtnEL.setAttribute("id", item.id);
+      svBtnEL.setAttribute("onclick", "onsaveclick()");
+      svBtnEL.classList.add("btn-lg");
+      optionsExe("button", svBtnEL, item.option);
+      addClass(svBtnEL, item.class);
+      addCss(svBtnEL, item.css);
+      svBtnEL.innerHTML = item.label;
+      comp.appendChild(svBtnEL);
+      break;
+    // END add BTN to form element
+    case "textarea":
+      comp.classList.toggle("form-group");
+      comp.classList.toggle("mb-3");
+      // add label to form element
+      const txtlbl = document.createElement("label");
+      txtlbl.setAttribute("for", item.id);
+      addCss(txtlbl, item.css);
+      txtlbl.innerHTML = item.label;
+      comp.appendChild(txtlbl);
+      // end add label to form element
+      // add textarea to form element
+      const taEL = document.createElement("textarea");
+      taEL.setAttribute("id", item.id);
+      taEL.setAttribute("placeholder", item.label);
+      taEL.setAttribute("onfocus", "autofocus1(id)");
+      taEL.setAttribute("onblur", "autoBlur1(id)");
+      optionsExe("textarea", taEL, item.option);
+      addClass(taEL, item.class);
+      addCss(taEL, item.css);
+      comp.appendChild(taEL);
+
+      const tamsgEl = document.createElement("div");
+      tamsgEl.setAttribute("id", `${item.id}_err`);
+      tamsgEl.classList.toggle("d-none");
+      tamsgEl.classList.toggle("invalid-feedback");
+      comp.appendChild(tamsgEl);
+      break;
+    // END add TEXTAREA to form element
+    case "file":
+      comp.classList.toggle("form-group");
+      //label
+      const fllblEl = document.createElement("span");
+      addCss(fllblEl, item.css);
+      fllblEl.innerHTML = item.label;
+      comp.appendChild(fllblEl);
+      //file-upload
+      const fileEl = document.createElement("input");
+      fileEl.setAttribute("type", item.type);
+      fileEl.setAttribute("id", item.id);
+      fileEl.setAttribute("onfocus", "autofocus1(id)");
+      fileEl.setAttribute("onblur", "autoBlur1(id)");
+      addClass(fileEl, item.class);
+      fileEl.setAttribute("accept", "image/*,.jpg,.jpeg,.doc,.pdf");
+      comp.appendChild(fileEl);
+      //end add file-upload to form element
+      // add msg element to form element
+      const flmsgEl = document.createElement("div");
+      flmsgEl.setAttribute("id", `${item.id}_err`);
+      flmsgEl.classList.toggle("d-none");
+      flmsgEl.classList.toggle("invalid-feedback");
+      comp.appendChild(flmsgEl);
+      break;
+    // END add FILE element to form element
+    case "time":
+      comp.classList.toggle("cs-form");
+      //label
+      const timelblEl = document.createElement("label");
+      addCss(timelblEl, item.css);
+      timelblEl.innerHTML = item.label;
+      comp.appendChild(timelblEl);
+      // Time
+      const timeEl = document.createElement("input");
+      timeEl.setAttribute("type", item.type);
+      addClass(timeEl, item.class);
+      timeEl.setAttribute("id", item.id);
+      timeEl.setAttribute("onfocus", "autofocus1(id)");
+      timeEl.setAttribute("onblur", "autoBlur1(id)");
+      comp.appendChild(timeEl);
+
+      const timemsgEl = document.createElement("div");
+      timemsgEl.setAttribute("id", `${item.id}_err`);
+      timemsgEl.classList.toggle("d-none");
+      timemsgEl.classList.toggle("invalid-feedback");
+      comp.appendChild(timemsgEl);
+      break;
+    //End add TIME to form element
+    case "rating":
+      let fieldEl = document.createElement("fieldset");
+      fieldEl.classList.toggle("rate");
+      const rtspanEl = document.createElement("span");
+      rtspanEl.setAttribute("for", item.id);
+      addCss(rtspanEl, item.css);
+      rtspanEl.innerHTML = item.label;
+      fieldEl.appendChild(rtspanEl);
+      for (let j = 10; j > 0; j--) {
+        //STAR 5
+        const starEl = document.createElement("input");
+        starEl.setAttribute("type", "radio");
+        starEl.setAttribute("id", `${item.id}_rating${j}`);
+        starEl.setAttribute("name", "rating");
+        starEl.setAttribute("value", `${j}`);
+        fieldEl.appendChild(starEl);
+        //label
+        const rtelbleEl = document.createElement("label");
+        rtelbleEl.setAttribute("for", `${item.id}_rating${j}`);
+        rtelbleEl.setAttribute("class", `${j % 2 !== 0 ? "half" : ""}`);
+        rtelbleEl.setAttribute("title", ` ${j * 0.5} stars`);
+        fieldEl.appendChild(rtelbleEl);
+      }
+      comp.appendChild(fieldEl);
+      break;
+    //End add STAR to form element
+    case "signature":
+      comp.setAttribute("class", "form-group signature-component");
+      //Label
+      const siglblEl = document.createElement("span");
+      siglblEl.setAttribute("for", item.id);
+      siglblEl.innerHTML = item.label;
+      comp.appendChild(siglblEl);
+      //Canvas
+      const canvasEl = document.createElement("canvas");
+      canvasEl.setAttribute("id", item.id);
+      canvasEl.setAttribute("class", "form-control");
+      canvasEl.setAttribute("width", "400");
+      canvasEl.setAttribute("height", "200");
+      canvasEl.setAttribute("onmouseover", "signature(id)");
+      comp.appendChild(canvasEl);
+      //CLEAR BUTTON
+      let clrBtnEL = document.createElement("button");
+      clrBtnEL.setAttribute("id", "clear");
+      clrBtnEL.innerHTML = "Clear";
+      clrBtnEL.setAttribute("class", "btn btn-primary btn-sm");
+      comp.appendChild(clrBtnEL);
+
+      const sigmsgEl = document.createElement("div");
+      sigmsgEl.setAttribute("id", `${item.id}_err`);
+      sigmsgEl.classList.toggle("d-none");
+      sigmsgEl.classList.toggle("invalid-feedback");
+      comp.appendChild(sigmsgEl);
+      break;
+    //End add SIGNATURE to form Element
+    default:
+      break;
+  }
+  return comp;
+}
+
+//////////////////////////// add bootstrap css ////////////////////////////////
+if (bootstrapVersion != "0.0.0") {
+  let element = document.createElement("link");
+  element.setAttribute("rel", "stylesheet");
+  element.setAttribute("type", "text/css");
+  element.setAttribute(
+    "href",
+    `https://cdn.jsdelivr.net/npm/bootstrap@${
+      bootstrapVersion || "5.2.3"
+    }/dist/css/bootstrap.min.css`
+  );
+  document.getElementsByTagName("head")[0].appendChild(element);
+}
+//////////////////////////// End add bootstrap css ////////////////////////////////
+
+// Link add to head in html
+const styleEl1 = document.createElement("link");
+styleEl1.setAttribute("rel", "stylesheet");
+styleEl1.setAttribute("type", "text/css");
+styleEl1.setAttribute("href", "style.css");
+document.getElementsByTagName("head")[0].appendChild(styleEl1);
+
+const scriptEl = document.createElement("script");
+scriptEl.setAttribute(
+  "src",
+  "https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.3.5/signature_pad.js"
+);
+document.getElementsByTagName("head")[0].appendChild(scriptEl);
+
+// Font Awesome for Ratings
+const styleEl2 = document.createElement("link");
+styleEl2.setAttribute(
+  "href",
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+);
+styleEl2.setAttribute("rel", "stylesheet");
+document.getElementsByTagName("head")[0].appendChild(styleEl2);
+//END
+
+/* ===============Signature================ */
+function signature(id) {
+  if (drawCanvas) {
+    let canvas = document.getElementById(id);
+    function resizeCanvas() {
+      let ratio = Math.max(window.devicePixelRatio || 1, 2);
+      canvas.width = canvas.offsetWidth * ratio;
+      canvas.height = canvas.offsetHeight * ratio;
+      canvas.getContext("2d").scale(ratio, ratio);
+    }
+    window.onresize = resizeCanvas;
+    resizeCanvas();
+
+    signaturePad = new SignaturePad(canvas, {
+      backgroundColor: "rgb(250,250,250)",
+    });
+    document.getElementById("clear").addEventListener("click", function () {
+      signaturePad.clear();
+    });
+    drawCanvas = false;
+  }
+} //    ===============Signature Complete================ //
+const Signatureurl =
+  "data:image/png;base64,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";
+
+// Form Validation
 function onsaveclick() {
   let isFrmValid = true;
   // ON click data is coming
-  let frm = {
-    lastName: document.getElementById("txLName").value,
-    email: document.getElementById("txEmail").value,
-    address: document.getElementById("txAdd").value,
-    password: document.getElementById("txPassword").value,
-    gender: document.getElementById("btnradio").value,
-    mobile: document.getElementById("typeNumber").value,
-    Date_of_birthday: document.getElementById("txtDob").value,
-    Time: document.getElementById("appt").value,
-    File: document.getElementById("file-upload").value,
-  };
+  let formObject = {};
 
   // Form Validation
   for (let i = 0; i < frmJson.length; i++) {
     if (frmJson[i].type == "row") {
       frmJson[i].col.forEach((field) => {
+        //get THe DaTA
+        if (field.type == "radio" || field.type == "checkbox") {
+          formObject[field.id] = [];
+          let options = field.option;
+          for (let k = 0; k < options.length; k++) {
+            let optval = getControl(options[k].val)?.checked;
+            if (optval) {
+              formObject[field.id].push(options[k].val);
+            }
+          }
+        } //Rating Value
+        else if (field.type == "rating") {
+          for (let s = 0; s < 10; s++) {
+            let rtval = getControl(`${field.id}_rating${s}`)?.checked;
+            if (rtval) {
+              formObject[field.id] = getControl(`${field.id}_rating${s}`).value;
+              break;
+            }
+          }
+        } else if (field.type == "signature") {
+          let canvas = document.getElementById("signature-pad"); //get your canvas
+          let image = canvas.toDataURL("image/png"); //Convert to base64
+          formObject[field.id] = image;
+        } else if (field.type == "file") {
+          let inputElement = document.getElementById("file-upload");
+          let files = inputElement.files;
+
+          let fileinput = files[0];
+          function getBase64(file) {
+            let reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function () {
+              console.log(reader.result, "nothing");
+              formObject[field.id] = reader.result;
+            };
+          }
+          getBase64(fileinput);
+        } else {
+          formObject[field.id] = getControl(field.id)?.value;
+        }
+        //End get the value
         if ("validateType" in field) {
           if (field.validateType.isValidate) {
             // first check required is true
             if (field.validateType.rule.require) {
-              isFrmValid = false;
               if (!getControl(field.id).value && field.type !== "signature") {
-                console.log("If !===")
-                console.log(getControl(field.id).value, field.id, field.type);
+                isFrmValid = false;
                 getControl(field.id).classList.add("is-invalid");
                 getErrMsgControl(field.id).classList.remove("d-none");
                 getErrMsgControl(field.id).innerHTML =
@@ -399,12 +497,12 @@ function onsaveclick() {
                     getControl(field.id).classList.remove("is-invalid");
                   }
                 } else if (field.type == "signature") {
-                  console.log("bolo");
-                  var canvas = document.getElementById("signature-pad"); //get your canvas
-                  var image = canvas.toDataURL("image/png"); //Convert to base64
-                  console.log(image);
+                  let canvas = document.getElementById("signature-pad"); //get your canvas
+                  let image = canvas.toDataURL("image/png"); //Convert to base64
+                  // console.log(image);
                   if (Signatureurl.toString() == image.toString()) {
-                    alert("Signature is Required");
+                    getControl(field.id).classList.add("is-invalid");
+                    getErrMsgControl(field.id).classList.remove("d-none");
                     getErrMsgControl(field.id).innerHTML =
                       field.validateType.rule.message.replace(
                         "{LABEL}",
@@ -413,12 +511,14 @@ function onsaveclick() {
                     isFrmValid = false;
                     return;
                   } else {
-                    getErrMsgControl(field.id).classList.add("d-none");
+                    console.log(image, formObject);
+                    formObject[field.id] = image;
                     getControl(field.id).classList.remove("is-invalid");
+                    getControl(field.id).classList.add("is-valid");
                   }
-                } else if (field.type == "file-upload") {
-                  var inputElement = document.getElementById("file-upload");
-                  var files = inputElement.files;
+                } else if (field.type == "file") {
+                  let inputElement = document.getElementById("file-upload");
+                  let files = inputElement.files;
                   if (files.length == 0) {
                     getErrMsgControl(field.id).innerHTML =
                       field.validateType.rule.message.replace(
@@ -428,34 +528,42 @@ function onsaveclick() {
                     isFrmValid = false;
                     return;
                   } else {
-                    var filename = files[0].name;
+                    let filename = files[0].name;
 
                     // getting file extension eg- .jpg,.png, etc
-                    var extension = filename.substr(filename.lastIndexOf("."));
+                    let extension = filename.substr(filename.lastIndexOf("."));
 
                     // define allowed file types
-                    var allowedExtensionsRegx =
+                    let allowedExtensionsRegx =
                       /(\.jpg|\.jpeg|\.img|\.doc|\.pdf)$/i;
 
                     // testing extension with regular expression
-                    var isAllowed = allowedExtensionsRegx.test(extension);
-
+                    let isAllowed = allowedExtensionsRegx.test(extension);
+                    console.log(isAllowed, "is allowed");
                     if (isAllowed) {
+                      let fileinput = files[0];
+                      function getBase64(file) {
+                        let reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onload = function () {
+                          console.log(reader.result, "nothing");
+                          formObject[field.id] = reader.result;
+                        };
+                      }
+                      getBase64(fileinput);
                       getErrMsgControl(field.id).classList.add("d-none");
                       getControl(field.id).classList.remove("is-invalid");
+                      getControl(field.id).classList.add("is-valid");
                       // file upload logic goes here...
-                    } else {
-                      alert("Invalid File Type.");
-                      return false;
                     }
                   }
                 } else {
-                  isFrmValid = true;
                   if (
                     !getErrMsgControl(field.id).classList.contains("d-none")
                   ) {
                     getErrMsgControl(field.id).classList.add("d-none");
                     getControl(field.id).classList.remove("is-invalid");
+                    getControl(field.id).classList.add("is-valid");
                   }
                 }
               }
@@ -465,9 +573,8 @@ function onsaveclick() {
       });
     }
   }
-  console.log(frm);
   if (isFrmValid) {
-    console.log(frm);
+    console.log(formObject);
   }
 }
 function getControl(elemId) {
@@ -477,185 +584,21 @@ function getControl(elemId) {
 function getErrMsgControl(elemId) {
   return document.getElementById(elemId + "_err");
 }
-
-/* ===============Signature================ */
-
-var canvas = document.getElementById("signature-pad");
-
-function resizeCanvas() {
-  var ratio = Math.max(window.devicePixelRatio || 1, 2);
-  canvas.width = canvas.offsetWidth * ratio;
-  canvas.height = canvas.offsetHeight * ratio;
-  canvas.getContext("2d").scale(ratio, ratio);
+//ON FOCUS
+function autofocus1(Id) {
+  let form = document.getElementById(Id);
+  // console.log(form);
 }
-window.onresize = resizeCanvas;
-resizeCanvas();
-
-var signaturePad = new SignaturePad(canvas, {
-  backgroundColor: "rgb(250,250,250)",
-});
-document.getElementById("clear").addEventListener("click", function () {
-  signaturePad.clear();
-});
-//    ===============Signature Complete================ //
-
-// column function
-function column(frmJson) {
-  let tempDiv = "";
-  for (k = 0; k < frmJson.col.length; k++) {
-    const metData = `<div class="col" style="border:1px solid black" >
-                      ${Rowconditon(frmJson.col[k])}
-                </div>`;
-
-    tempDiv = `${tempDiv} ${metData} `;
-  }
-  return tempDiv;
-}
-// =====End====
-
-// condtion
-function Rowconditon(frmJson) {
-  // console.log(frmJson,'test-json');
-  if (frmJson.type == "title") {
-    return `<div class="til">
-        <h1>${frmJson.title}</h1>
-        </div>`;
-  }
-  if (
-    frmJson.type == "text" ||
-    frmJson.type == "email" ||
-    frmJson.type == "date" ||
-    frmJson.type == "password"
-  ) {
-    // console.log("come for [col] input");
-    return `<div class="form-group">
-                <label for="${frmJson.id}" style="${frmJson.css}">${frmJson.label}</label>
-                <input type="${frmJson.type}" placeholder="${frmJson.place}" class="${frmJson.class}" id="${frmJson.id}" style="${frmJson.css}"/>
-                <div id="${frmJson.id}_err" class="d-none invalid-feedback">
-                </div>
-                </div>`;
-  }
-  if (frmJson.type == "number") {
-    // console.log("come for [col] input");
-    return `<div class="form-group  ">
-        <label for="${frmJson.id}" style="${frmJson.css}">${frmJson.label}</label>
-        <input type="${frmJson.type}" placeholder="${frmJson.place}" class="${frmJson.class}" id="${frmJson.id}" style="${frmJson.css}"/>
-        <div id="${frmJson.id}_err" class="d-none invalid-feedback">
-        </div>
-        </div>`;
-  }
-  if (frmJson.type == "button") {
-    // console.log("come for button");
-    return `
-                <div class=" p-2">
-                <button type="${frmJson.type}" class="${frmJson.class} btn-lg" id="${frmJson.id}" onclick="onsaveclick()">${frmJson.label}</button>
-                </div>`;
-  }
-  if (frmJson.type == "textarea") {
-    // console.log("come for textarea");
-    return `
-                <div class="form-group ">
-                <label for="${frmJson.id}" style="${frmJson.css}">${frmJson.label}</label>
-                <textarea class="form-control" id="${frmJson.id}"  style="${frmJson.css}" rows="${frmJson.row}"></textarea>
-              </div> <div id="${frmJson.id}_err" class="d-none invalid-feedback">
-              </div>`;
-  }
-  if (frmJson.type == "checkbox" || frmJson.type == "radio") {
-    // console.log("come for checkbox");
-    let postData = "";
-    for (let j = 0; j < frmJson.Option.length; j++) {
-      // console.log(j, frmJson.Option[j],'checkbox');
-      const newData = `
-                    <div class="form-group  p-1">
-                    <label for="flexCheckDefault"  style="${frmJson.css}">${frmJson.Option[j]}</label>
-                    <input type="${frmJson.type}" class="${frmJson.class}" id="${frmJson.id}" value="${frmJson.Option[j]}" style="${frmJson.css}"/>
-                    <div id="${frmJson.id}_err" class="d-none invalid-feedback"></div>
-                    </div>`;
-
-      postData = `${postData} ${newData} `;
-    }
-
-    frmHTML = `${frmHTML} ${postData}`;
-    return postData;
-  }
-  if (frmJson.type == "file-upload") {
-    return `
-                <br>
-                <div class="form-group ">
-                <h6>${frmJson.label}<h6>
-                <input type="file" class="form-control" id="${frmJson.id}" accept="image/*,.jpg,.jpeg,.doc,.pdf" multiple/>
-               </div>
-                <div id="${frmJson.id}_err" class="d-none invalid-feedback">
-                </div>`;
-  }
-  if (frmJson.type == "rating") {
-    return `
-                <h5> 
-                ${frmJson.label}
-                </h5>
-                <fieldset class="rate">
-                <input type="radio" id="rating10" name="rating" value="10" onclick="starrating(10)"/><label for="rating10" title="5 stars"></label>
-                <input type="radio" id="rating9" name="rating" value="9" onclick="starrating(9)"/><label class="half" for="rating9" title="4 1/2 stars"></label>
-                <input type="radio" id="rating8" name="rating" value="8" onclick="starrating(8)"/><label for="rating8" title="4 stars"></label>
-                <input type="radio" id="rating7" name="rating" value="7" onclick="starrating(7)"/><label class="half" for="rating7" title="3 1/2 stars"></label>
-                <input type="radio" id="rating6" name="rating" value="6" onclick="starrating(6)"/><label for="rating6" title="3 stars"></label>
-                <input type="radio" id="rating5" name="rating" value="5" onclick="starrating(5)"/><label class="half" for="rating5" title="2 1/2 stars"></label>
-                <input type="radio" id="rating4" name="rating" value="4" onclick="starrating(4)"/><label for="rating4" title="2 stars"></label>
-                <input type="radio" id="rating3" name="rating" value="3" onclick="starrating(3)"/><label class="half" for="rating3" title="1 1/2 stars"></label>
-                <input type="radio" id="rating2" name="rating" value="2" onclick="starrating(2)"/><label for="rating2" title="1 star"></label>
-                <input type="radio" id="rating1" name="rating" value="1" onclick="starrating(1)"/><label class="half" for="rating1" title="1/2 star"></label>
-                </fieldset>`;
-  }
-  if (frmJson.type == "time") {
-    return `
-        <div class="cs-form">
-        <label for="${frmJson.id}" class="form-group p-1" style="${frmJson.css}">${frmJson.label}</label>
-        <input type="time" class="form-control" id="${frmJson.id}" value="10:05 AM" />
-      </div>
-      <div id="${frmJson.id}_err" class="d-none invalid-feedback">
-      </div>`;
-  }
-  if (frmJson.type == "drop-down") {
-    return `<section>
-                <div class="form-group btn-group float-end">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                 ${frmJson.label}
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Separated link</a></li>
-                </ul>
-              </div>
-              </section>`;
-  }
-  if (frmJson.type == "signature") {
-    return `
-                <div class="form-group signature-component">
-                <label for="${frmJson.id}" style="${frmJson.css}">${frmJson.label}</label><br>
-                <canvas id="${frmJson.id}" width="400" height="200" ></canvas>
-                <div>
-                  <button id="clear" class="btn btn-primary btn-sm">Clear</button>
-                </div>
-              </div>
-              <div id="${frmJson.id}_err" class="d-none invalid-feedback">
-              </div>`;
-  }
-  if (frmJson.type == "recaptcha-V2") {
-    return ` <div class="form-group g-recaptcha" data-sitekey="6LfBaDolAAAAAL62L2khchXawb_8Y6B5zOfdWch2">
-                </div>`;
-  }
-  if (frmJson.type == "recaptcha-V3") {
-    return `<br>
-                <br>
-                <script src="https://www.google.com/recaptcha/api.js?render=6LdnWD8lAAAAAOqRNWXpDAVFQWGIfaPmQI42Qo08"></script>`;
+//ON BLUR
+function autoBlur1(Id) {
+  let form = document.getElementById(Id);
+  if (!form.value) {
+    getControl(form.id).classList.add("is-invalid");
+    getErrMsgControl(form.id).classList.remove("d-none");
+    return;
+  } else {
+    getControl(form.id).classList.remove("is-invalid");
+    getControl(form.id).classList.add("is-valid");
   }
 }
-
-// getting the rating
-function starrating(rt) {
-  console.log(rt);
-  return rt;
-}
+//END
